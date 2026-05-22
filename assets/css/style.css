@@ -16,7 +16,7 @@
 }
 
 @media (prefers-color-scheme: dark) {
-  :root {
+  :root:not(.light-theme) {
     --bg-color: #0f172a;
     --text-color: #94a3b8;
     --card-bg: #1e293b;
@@ -30,6 +30,36 @@
     --main-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
     --hover-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
   }
+}
+
+:root.dark-theme {
+  --bg-color: #0f172a;
+  --text-color: #94a3b8;
+  --card-bg: #1e293b;
+  --border-color: #334155;
+  --title-color: #f8fafc;
+  --primary-color: #38bdf8;
+  --primary-hover: #0ea5e9;
+  --sidebar-bg: #1e293b;
+  --accent-color: #38bdf8;
+  --metric-bg: #0f172a;
+  --main-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  --hover-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+}
+
+:root.light-theme {
+  --bg-color: #f1f5f9;
+  --text-color: #334155;
+  --card-bg: #ffffff;
+  --border-color: #e2e8f0;
+  --title-color: #0f172a;
+  --primary-color: #3b82f6;
+  --primary-hover: #2563eb;
+  --sidebar-bg: #ffffff;
+  --accent-color: #2563eb;
+  --metric-bg: #f8f9fa;
+  --main-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+  --hover-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
 }
 
 body {
@@ -179,6 +209,23 @@ html {
   background-color: var(--bg-color);
   color: var(--primary-color);
   border-radius: 6px;
+}
+
+.theme-toggle-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 12px;
+  font-size: 1.1rem;
+  color: var(--title-color);
+  cursor: pointer;
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.theme-toggle-btn:hover {
+  color: var(--primary-color) !important;
+  background-color: transparent !important;
+  transform: rotate(15deg);
 }
 
 /* ============================= */
