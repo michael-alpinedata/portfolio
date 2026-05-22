@@ -1,15 +1,45 @@
-/* ============================= */
-/* Base / Typography             */
-/* ============================= */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --bg-color: #f1f5f9;
+  --text-color: #334155;
+  --card-bg: #ffffff;
+  --border-color: #e2e8f0;
+  --title-color: #0f172a;
+  --primary-color: #3b82f6;
+  --primary-hover: #2563eb;
+  --sidebar-bg: #ffffff;
+  --accent-color: #2563eb;
+  --metric-bg: #f8f9fa;
+  --main-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+  --hover-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg-color: #0f172a;
+    --text-color: #94a3b8;
+    --card-bg: #1e293b;
+    --border-color: #334155;
+    --title-color: #f8fafc;
+    --primary-color: #38bdf8;
+    --primary-hover: #0ea5e9;
+    --sidebar-bg: #1e293b;
+    --accent-color: #38bdf8;
+    --metric-bg: #0f172a;
+    --main-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    --hover-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+  }
+}
 
 body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   font-size: 1rem;
   line-height: 1.6;
-  color: #222;
+  color: var(--text-color);
   margin: 0;
   padding: 0;
-  background-color: #ecf0f1;
+  background-color: var(--bg-color);
 }
 
 p {
@@ -19,11 +49,12 @@ p {
 
 strong {
   font-weight: bold;
-  color: #2c3e50;
+  color: var(--title-color);
 }
 
 em {
-  color: #7f8c8d;
+  color: var(--text-color);
+  opacity: 0.8;
   font-weight: 500;
 }
 
@@ -34,18 +65,19 @@ em {
 h1 {
   font-size: 2.25rem;
   margin-bottom: 1rem;
+  color: var(--title-color);
 }
 
 h2 {
   font-size: 1.75rem;
   margin-bottom: 0.8rem;
-  color: #2c3e50;
+  color: var(--title-color);
 }
 
 h3 {
   font-size: 1.375rem;
   margin-bottom: 0.6rem;
-  color: #34495e;
+  color: var(--title-color);
   margin-top: 25px;
 }
 
@@ -69,7 +101,7 @@ li {
 /* ============================= */
 
 a {
-  color: #2980b9;       /* slightly deeper blue */
+  color: var(--accent-color);
   text-decoration: none;
   font-weight: 500;
 }
@@ -107,10 +139,11 @@ html {
 
 .content-area {
   flex-grow: 1;
-  background: #fafafa;
+  background: var(--card-bg);
   padding: 20px;
   box-sizing: border-box;
-  box-shadow: 0 0 10px #eee;
+  box-shadow: var(--main-shadow);
+  border: 1px solid var(--border-color);
   border-radius: 8px;
 }
 
@@ -119,9 +152,10 @@ html {
 /* ============================= */
 
 .top-banner {
-  background-color: #f5a623;
+  background-color: var(--card-bg);
+  border-bottom: 1px solid var(--border-color);
   width: 100%;
-  padding: 10px 20px;
+  padding: 12px 20px;
   box-sizing: border-box;
 }
 
@@ -134,15 +168,17 @@ html {
 }
 
 .top-nav a {
-  color: black;
+  color: var(--title-color);
   text-decoration: none;
   padding: 8px 15px;
-  font-weight: 600;
+  font-weight: 550;
+  transition: all 0.2s ease;
 }
 
 .top-nav a:hover {
-  background-color: #f2b94f;
-  border-radius: 4px;
+  background-color: var(--bg-color);
+  color: var(--primary-color);
+  border-radius: 6px;
 }
 
 /* ============================= */
@@ -152,10 +188,11 @@ html {
 .side-banner {
   width: 300px;
   min-width: 250px;
-  padding: 20px;
-  background-color: #fdf5e6; /* pale yellow */
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-  border-radius: 8px;
+  padding: 25px;
+  background-color: var(--sidebar-bg);
+  border: 1px solid var(--border-color);
+  box-shadow: var(--main-shadow);
+  border-radius: 12px;
   text-align: center;
   align-self: flex-start;
 }
@@ -173,6 +210,7 @@ html {
   text-align: center;
   font-size: 1.1em;
   margin: 0 0 0.2em 0;
+  color: var(--title-color);
 }
 
 .desc {
@@ -180,6 +218,7 @@ html {
   text-align: center;
   font-size: 1.1em;
   margin: 0 0 15px 0;
+  color: var(--text-color);
 }
 
 /* contact lines inside sidebar */
@@ -191,7 +230,7 @@ html {
 
 .side-banner i {
   margin-right: 8px;
-  color: #f5a623;
+  color: var(--primary-color);
 }
 
 /* ============================= */
@@ -309,7 +348,7 @@ html {
   gap: 15px;
   margin: 20px 0;
   padding: 20px;
-  background-color: #f8f9fa;
+  background-color: var(--metric-bg);
   border-radius: 8px;
 }
 
@@ -319,9 +358,9 @@ html {
 }
 
 .metric-value {
-  font-size: 1.2em;
+  font-size: 1.25em;
   font-weight: bold;
-  color: #27ae60;
+  color: #10b981;
 }
 
 /* ============================= */
@@ -364,10 +403,17 @@ html {
 
 .project-details {
   margin-bottom: 2rem;
-  border-radius: 10px;
-  background: #ffffff;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  border-radius: 12px;
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  box-shadow: var(--main-shadow);
   padding: 0.5rem 1.5rem 1.5rem;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.project-details:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--hover-shadow);
 }
 
 /* remove default marker */
@@ -375,18 +421,21 @@ html {
   display: none;
 }
 
-/* clickable header bar */
+/* clickable header bar - normal text layout to avoid flex word spacing issues */
 .project-details > summary {
   list-style: none;
   cursor: pointer;
   font-size: 1.35rem;     /* bigger project titles */
   font-weight: 650;
-  color: #1f2c3a;
-  border-bottom: 2px solid #3498db;
+  color: var(--title-color);
+  border-bottom: 2px solid var(--primary-color);
   padding: 0.9rem 0;
   margin-bottom: 0.9rem;
-  display: flex;
-  align-items: center;
+  transition: color 0.2s ease;
+}
+
+.project-details > summary:hover {
+  color: var(--primary-color);
 }
 
 /* arrow icon */
@@ -395,7 +444,7 @@ html {
   display: inline-block;
   margin-right: 0.5rem;
   font-size: 0.9rem;
-  color: #3498db;
+  color: var(--primary-color);
   transition: transform 0.2s ease;
 }
 
@@ -416,7 +465,7 @@ html {
 .project-article p em {
   font-style: normal;
   font-weight: 600;
-  color: #2980b9; /* stronger blue accent */
+  color: var(--accent-color); /* stronger blue accent */
   text-transform: uppercase;
   letter-spacing: 0.03em;
 }
@@ -435,7 +484,7 @@ html {
 
 /* first bold word in stack / feature lists */
 .project-article ul li > strong {
-  color: #2c3e50;        /* dark navy */
+  color: var(--title-color);        /* dark navy or white in dark mode */
   font-weight: 700;
 }
 
@@ -469,19 +518,38 @@ html {
 @media (max-width: 800px) {
   .main-content {
     flex-direction: column;
+    padding: 0 10px;
   }
 
-  .side-banner,
+  .side-banner {
+    width: 100%;
+    box-sizing: border-box;
+  }
+
   .content-area {
     width: 100%;
+    box-sizing: border-box;
+    padding: 15px;
   }
 
   .top-nav {
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
+    gap: 10px;
   }
 
   .right-tabs {
-    margin-top: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 5px;
+    margin-top: 0;
   }
+}
+
+@media (max-width: 600px) {
+  h1 { font-size: 1.8rem; }
+  h2 { font-size: 1.4rem; }
+  h3 { font-size: 1.15rem; }
+  .project-details > summary { font-size: 1.15rem; }
 }
