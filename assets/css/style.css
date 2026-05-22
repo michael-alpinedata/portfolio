@@ -273,6 +273,7 @@ html {
   margin: 2px 0;
   font-size: 0.95em;
   text-align: left;
+  color: var(--accent-color);
 }
 
 .side-banner i {
