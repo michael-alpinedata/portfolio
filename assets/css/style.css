@@ -270,15 +270,26 @@ html {
 
 /* contact lines inside sidebar */
 .side-banner p:not(.name):not(.desc) {
-  margin: 2px 0;
+  margin: 6px 0;
   font-size: 0.95em;
   text-align: left;
   color: var(--accent-color);
+  display: flex;
+  align-items: flex-start;
 }
 
-.side-banner i {
-  margin-right: 8px;
+.side-banner i,
+.side-banner .sidebar-icon {
+  width: 16px;
+  min-width: 16px;
+  margin-right: 10px;
   color: var(--primary-color);
+  text-align: center;
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 2px;
 }
 
 /* ============================= */
