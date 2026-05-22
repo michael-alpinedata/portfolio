@@ -6,6 +6,39 @@
   <title id="page-title">Portfolio</title>
   <link rel="stylesheet" href="assets/css/style.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <script>
+    (function() {
+      const savedTheme = localStorage.getItem('theme');
+      if (savedTheme === 'dark') {
+        document.documentElement.classList.add('dark-theme');
+      } else if (savedTheme === 'light') {
+        document.documentElement.classList.add('light-theme');
+      }
+    })();
+
+    function toggleTheme() {
+      const isDark = document.documentElement.classList.contains('dark-theme');
+      const isLight = document.documentElement.classList.contains('light-theme');
+      let targetDark = false;
+      if (isDark) {
+        targetDark = false;
+      } else if (isLight) {
+        targetDark = true;
+      } else {
+        targetDark = !window.matchMedia('(prefers-color-scheme: dark)').matches;
+      }
+      
+      if (targetDark) {
+        document.documentElement.classList.remove('light-theme');
+        document.documentElement.classList.add('dark-theme');
+        localStorage.setItem('theme', 'dark');
+      } else {
+        document.documentElement.classList.remove('dark-theme');
+        document.documentElement.classList.add('light-theme');
+        localStorage.setItem('theme', 'light');
+      }
+    }
+  </script>
 </head>
 <body>
 
