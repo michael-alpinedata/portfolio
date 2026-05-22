@@ -1,11 +1,131 @@
 <h1>Projets d'Ingénierie des Données</h1>
 
 
-<!-- PROJET 0 - ALPINE LAMBDA TRADE -->
+<!-- PROJET 0 - ENERGY RISK DASHBOARD SMES -->
 <details class="project-details" open>
   <summary>
+    SME Energy Risk Dashboard (<strong>GCP, BigQuery, dbt & Looker Studio</strong>)
+  </summary>
+
+  <article class="hero-block">
+    <div class="metrics-grid" style="margin-top: 0; background: linear-gradient(135deg, #1f2c3a, #151e27); color: white; padding: 25px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.15); font-family: system-ui, -apple-system, sans-serif;">
+      <div style="grid-column: 1 / -1; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 10px; margin-bottom: 15px;">
+        <span style="font-weight: bold; font-size: 1.1em; color: #f5a623;"><i class="fa-solid fa-chart-line" style="margin-right: 8px;"></i>SME Energy Risk & Financial Impact Simulator</span>
+        <span style="font-size: 0.85em; background: #27ae60; padding: 3px 8px; border-radius: 12px; color: white;">Looker Studio Live</span>
+      </div>
+      <div class="metric-item" style="border-right: 1px solid rgba(255,255,255,0.1);">
+        <div style="font-size: 0.85em; opacity: 0.7; margin-bottom: 5px;">Coût Énergie Simulé</div>
+        <div class="metric-value" style="color: #e74c3c; font-size: 1.5em; font-weight: bold;">+184%</div>
+        <div style="font-size: 0.8em; opacity: 0.6; margin-top: 5px;">vs Base de Référence</div>
+      </div>
+      <div class="metric-item" style="border-right: 1px solid rgba(255,255,255,0.1);">
+        <div style="font-size: 0.85em; opacity: 0.7; margin-bottom: 5px;">Marge Brute PME</div>
+        <div class="metric-value" style="color: #f1c40f; font-size: 1.5em; font-weight: bold;">-38%</div>
+        <div style="font-size: 0.8em; opacity: 0.6; margin-top: 5px;">Impact Volatilité Moyen</div>
+      </div>
+      <div class="metric-item" style="border-right: 1px solid rgba(255,255,255,0.1);">
+        <div style="font-size: 0.85em; opacity: 0.7; margin-bottom: 5px;">Zone de Prix Critique</div>
+        <div class="metric-value" style="color: #e67e22; font-size: 1.3em; font-weight: bold;">DE / DE_LU</div>
+        <div style="font-size: 0.8em; opacity: 0.6; margin-top: 5px;">Volatilité Intra-journalière</div>
+      </div>
+      <div class="metric-item">
+        <div style="font-size: 0.85em; opacity: 0.7; margin-bottom: 5px;">Profils Modélisés</div>
+        <div class="metric-value" style="color: #2ecc71; font-size: 1.5em; font-weight: bold;">10 Segments</div>
+        <div style="font-size: 0.8em; opacity: 0.6; margin-top: 5px;">Boulangerie, Logistique, Retail...</div>
+      </div>
+    </div>
+  </article>
+
+  <article class="project-article">
+    <p><em>Objectif :</em> Modéliser et visualiser l'exposition des petites et moyennes entreprises (PME) à la volatilité des prix de l'électricité en Europe. Connecter les prix historiques spot de l'électricité (données OPSD) à un modèle financier simplifié de P&L par segment de PME.</p>
+
+    <p><em>Stack :</em></p>
+    <ul class="stack-list">
+      <li><strong>Cloud & Infrastructure :</strong> GCP (Google Cloud Storage, BigQuery), Terraform (IaC)</li>
+      <li><strong>Transformations & Modélisation :</strong> dbt Core (BigQuery, partitionnement mensuel, clustering, staging + mart, seeds)</li>
+      <li><strong>Ingestion & Automatisation :</strong> Python (avec uv), tables externes BigQuery, scripting Shell</li>
+      <li><strong>Serving / Dashboard :</strong> Looker Studio</li>
+    </ul>
+
+    <h3>Architecture & Optimisations BI</h3>
+    <div class="architecture-diagram">
+      <div style="padding: 1rem; border: 1px solid var(--border-color); border-radius: 8px; background: var(--card-bg); text-align: left; font-size: 0.9em; margin-bottom: 15px;">
+        <strong>Flux d'Ingestion :</strong> Script Python (gestionnaire uv) -> Chargement du CSV OPSD brut sur GCS -> Table externe BigQuery (`raw_energy_prices_ext`).<br/>
+        <strong>Pipeline d'Analytique (dbt) :</strong> Transformation & Unpivot (staging) -> Cross Join dynamique avec les profils de PME (seeds) -> Table finale `mart_sme_energy_costs`.<br/>
+        <strong>Optimisation FinOps :</strong> Partitionnement mensuel sur `ts_utc` et clustering par `price_zone` et `segment` dans BigQuery pour optimiser le temps de réponse et diviser par 10 le coût des requêtes de Looker Studio.
+      </div>
+    </div>
+
+    <p><em>Fonctionnalités clés :</em></p>
+    <ul>
+      <li><strong>Pipeline ELT complet & automatisé :</strong> Ingestion robuste de données horaires de prix d'électricité et exposition sous forme de table externe BigQuery.</li>
+      <li><strong>Modélisation financière granulaire :</strong> Simulation de P&L (chiffre d'affaires requis, coûts totaux, coûts de l'énergie, profit brut) pour 10+ profils d'archetypes de PME.</li>
+      <li><strong>Looker Studio Interactif :</strong> Dashboard dynamique avec filtres géographiques (zones de prix), sectoriels (type de PME) et temporels pour identifier l'exposition au risque.</li>
+      <li><strong>Tests & Qualité des données :</strong> Utilisation rigoureuse de tests dbt (`not_null`, `unique`, seeds) assurant l'intégrité du pipeline avant publication.</li>
+    </ul>
+
+    <p><em>Liens :</em>
+      <a href="https://lookerstudio.google.com/reporting/3e8551a0-9426-4143-991a-14f19e0b2a69" target="_blank" rel="noopener">Dashboard Live</a> |
+      <a href="https://github.com/MichaelG-create/energy-risk-dashboard-smes" target="_blank" rel="noopener">Code source &amp; README</a>
+    </p>
+  </article>
+</details>
+
+
+<!-- PROJET 1 - GRADESCALE -->
+<details class="project-details">
+  <summary>
+    GradeScale (<strong>Moteur d'évaluation IA & Infrastructure Cloud Azure</strong>)
+  </summary>
+
+  <article class="hero-block">
+    <img src="assets/images/diagram_cloud.png"
+         alt="Architecture Azure Industrialisée GradeScale"
+         class="hero-image" />
+  </article>
+
+  <article class="project-article">
+    <p><em>Objectif :</em> Concevoir une preuve de concept (PoC) d'un moteur d'évaluation formative backend assisté par IA permettant aux enseignants d'analyser de manière granulaire les copies d'élèves (par rubriques et critères, détection des misconceptions), avec une architecture transactionnelle robuste et une infrastructure cloud Azure automatisée.</p>
+
+    <p><em>Stack :</em></p>
+    <ul class="stack-list">
+      <li><strong>Logique Applicative :</strong> Node.js, TypeScript, Fastify, Zod (Structured Outputs & Validation), Prisma ORM, PostgreSQL</li>
+      <li><strong>Cloud Infrastructure (Azure) :</strong> Azure Container Apps (ACA), Azure Static Web Apps (SWA), Azure PostgreSQL Flexible Server, Azure Key Vault</li>
+      <li><strong>Intelligence Artificielle :</strong> Inférence Groq LPU (Modèles Llama 3.3 70B)</li>
+      <li><strong>DevOps & Industrialisation :</strong> Terraform (IaC), Docker (Multi-stage), GitHub Actions (CI/CD), Vitest (QA)</li>
+    </ul>
+
+    <h3>Flux de Données & Évaluation IA</h3>
+    <div class="architecture-diagram">
+      <img src="assets/images/diagram_evaluation_flow.png"
+           alt="Flux d'évaluation IA GradeScale"
+           class="architecture-image" />
+      <div style="margin-top: 15px; font-size: 0.9em; opacity: 0.8;">
+        Workflow de traitement : Soumission de la copie -> Validation de schéma Zod -> Pseudonymisation -> Inférence structurée Groq LPU -> Persistance Prisma dans PostgreSQL Flexible Server.
+      </div>
+    </div>
+
+    <p><em>Fonctionnalités clés :</em></p>
+    <ul>
+      <li><strong>Domain-Driven Design (DDD) & Modélisation Pédagogique :</strong> Structure hiérarchique dynamique représentant des compétences conceptuelles et analyse sémantique détectant les biais de raisonnement récurrents chez l'élève (misconceptions).</li>
+      <li><strong>Privacy by Design (RGPD) :</strong> Couche de pseudonymisation interceptant et nettoyant les données étudiantes brutes avant leur envoi au fournisseur LLM externe.</li>
+      <li><strong>Sécurité "Zero Secret" :</strong> Authentification sécurisée par Managed Identity (MSI) d'Azure connectant l'API Node.js directement à Azure Key Vault, évitant tout mot de passe en clair dans l'environnement.</li>
+      <li><strong>CI/CD & DevOps complet :</strong> Pipeline automatisé (Vitest, Docker build sur GHCR, Terraform, Déploiement progressif sur ACA/SWA et tests de fumée).</li>
+    </ul>
+
+    <p><em>Liens :</em>
+      <a href="https://icy-desert-090b37903.7.azurestaticapps.net/" target="_blank" rel="noopener">Interface Live</a> |
+      <a href="https://aca-gradescale-api-dev.wonderfulmoss-37500a79.francecentral.azurecontainerapps.io/" target="_blank" rel="noopener">API Live</a> |
+      <a href="https://github.com/MichaelG-create/grade-scale" target="_blank" rel="noopener">Code source</a>
+    </p>
+  </article>
+</details>
+
+
+<!-- PROJET 2 - ALPINE LAMBDA TRADE -->
+<details class="project-details">
+  <summary>
     Alpine Lambda Trade (<strong>Architecture Lambda Haute Performance</strong>)
-    (<span class="nowrap">04/2026</span>)
   </summary>
 
   <article class="hero-block">
@@ -57,7 +177,6 @@
 <details class="project-details">
   <summary>
     Market Data Pipeline Temps Réel (<strong>Kafka & SLI/SLO</strong>)
-    (<span class="nowrap">12/2025</span>)
   </summary>
 
   <article class="hero-block">
@@ -110,7 +229,6 @@
 <details class="project-details">
   <summary>
     Sectoral - Pipeline d’analyse sectorielle automatisée
-    (<span class="nowrap">06/2025&nbsp;&ndash;&nbsp;en cours</span>)
   </summary>
 
   <article class="hero-block">
@@ -183,7 +301,6 @@
 <details class="project-details">
   <summary>
     Suivi d’affluence en agence bancaire (<strong>Pipeline PySpark</strong>)
-    (<span class="nowrap">01/2025&nbsp;&ndash;&nbsp;03/2025</span>)
   </summary>
 
   <article class="hero-block hero-block-cycle">
