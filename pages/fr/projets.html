@@ -1,363 +1,150 @@
 <h1>Projets d'Ingénierie des Données</h1>
 
-
 <!-- PROJET 0 - ENERGY RISK DASHBOARD SMES -->
-<details class="project-details" open>
+<details class="project-details fade-in-up" open>
   <summary>
-    SME Energy Risk Dashboard (<strong>GCP, BigQuery, dbt & Looker Studio</strong>)
+    SME Energy Risk Dashboard
   </summary>
 
   <article class="hero-block">
-    <div class="metrics-grid" style="margin-top: 0; background: linear-gradient(135deg, #1f2c3a, #151e27); color: white; padding: 25px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.15); font-family: system-ui, -apple-system, sans-serif;">
+    <div class="metrics-grid" style="margin-top: 0;">
       <div style="grid-column: 1 / -1; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 10px; margin-bottom: 15px;">
-        <span style="font-weight: bold; font-size: 1.1em; color: #f5a623;"><i class="fa-solid fa-chart-line" style="margin-right: 8px;"></i>SME Energy Risk & Financial Impact Simulator</span>
-        <span style="font-size: 0.85em; background: #27ae60; padding: 3px 8px; border-radius: 12px; color: white;">Looker Studio Live</span>
+        <span style="font-weight: bold; font-size: 1.1em; color: var(--primary-color);"><i class="fa-solid fa-chart-line" style="margin-right: 8px;"></i>Impact Financier & Volatilité</span>
+        <span style="font-size: 0.85em; background: rgba(16, 185, 129, 0.2); padding: 3px 8px; border-radius: 4px; color: #10b981; border: 1px solid rgba(16, 185, 129, 0.4); font-family: 'JetBrains Mono', monospace;">LIVE</span>
       </div>
-      <div class="metric-item" style="border-right: 1px solid rgba(255,255,255,0.1);">
+      <div class="metric-item" style="border-right: 1px solid var(--border-color);">
         <div style="font-size: 0.85em; opacity: 0.7; margin-bottom: 5px;">Coût Énergie Simulé</div>
-        <div class="metric-value" style="color: #e74c3c; font-size: 1.5em; font-weight: bold;">+184%</div>
+        <div class="metric-value font-code" style="color: #ef4444;" data-prefix="+" data-suffix="%" data-target-value="184">0%</div>
         <div style="font-size: 0.8em; opacity: 0.6; margin-top: 5px;">vs Base de Référence</div>
       </div>
-      <div class="metric-item" style="border-right: 1px solid rgba(255,255,255,0.1);">
+      <div class="metric-item" style="border-right: 1px solid var(--border-color);">
         <div style="font-size: 0.85em; opacity: 0.7; margin-bottom: 5px;">Marge Brute PME</div>
-        <div class="metric-value" style="color: #f1c40f; font-size: 1.5em; font-weight: bold;">-38%</div>
-        <div style="font-size: 0.8em; opacity: 0.6; margin-top: 5px;">Impact Volatilité Moyen</div>
+        <div class="metric-value font-code" style="color: #f59e0b;" data-prefix="-" data-suffix="%" data-target-value="38">0%</div>
+        <div style="font-size: 0.8em; opacity: 0.6; margin-top: 5px;">Impact Volatilité</div>
       </div>
-      <div class="metric-item" style="border-right: 1px solid rgba(255,255,255,0.1);">
-        <div style="font-size: 0.85em; opacity: 0.7; margin-bottom: 5px;">Zone de Prix Critique</div>
-        <div class="metric-value" style="color: #e67e22; font-size: 1.3em; font-weight: bold;">DE / DE_LU</div>
-        <div style="font-size: 0.8em; opacity: 0.6; margin-top: 5px;">Volatilité Intra-journalière</div>
+      <div class="metric-item" style="border-right: 1px solid var(--border-color);">
+        <div style="font-size: 0.85em; opacity: 0.7; margin-bottom: 5px;">Profils Financiers</div>
+        <div class="metric-value font-code" style="color: #10b981;" data-target-value="10">0</div>
+        <div style="font-size: 0.8em; opacity: 0.6; margin-top: 5px;">Archétypes Modélisés</div>
       </div>
       <div class="metric-item">
-        <div style="font-size: 0.85em; opacity: 0.7; margin-bottom: 5px;">Profils Modélisés</div>
-        <div class="metric-value" style="color: #2ecc71; font-size: 1.5em; font-weight: bold;">10 Segments</div>
-        <div style="font-size: 0.8em; opacity: 0.6; margin-top: 5px;">Boulangerie, Logistique, Retail...</div>
+        <div style="font-size: 0.85em; opacity: 0.7; margin-bottom: 5px;">Réduction Coûts BI</div>
+        <div class="metric-value font-code" style="color: #38bdf8;" data-prefix="-" data-suffix="%" data-target-value="90">0%</div>
+        <div style="font-size: 0.8em; opacity: 0.6; margin-top: 5px;">via Clustering dbt</div>
       </div>
     </div>
   </article>
 
   <article class="project-article">
-    <p><em>Objectif :</em> Modéliser et visualiser l'exposition des petites et moyennes entreprises (PME) à la volatilité des prix de l'électricité en Europe. Connecter les prix historiques spot de l'électricité (données OPSD) à un modèle financier simplifié de P&L par segment de PME.</p>
-
-    <p><em>Stack :</em></p>
-    <ul class="stack-list">
-      <li><strong>Cloud & Infrastructure :</strong> GCP (Google Cloud Storage, BigQuery), Terraform (IaC)</li>
-      <li><strong>Transformations & Modélisation :</strong> dbt Core (BigQuery, partitionnement mensuel, clustering, staging + mart, seeds)</li>
-      <li><strong>Ingestion & Automatisation :</strong> Python (avec uv), tables externes BigQuery, scripting Shell</li>
-      <li><strong>Serving / Dashboard :</strong> Looker Studio</li>
-    </ul>
-
-    <h3>Architecture & Optimisations BI</h3>
-    <div class="architecture-diagram">
-      <div style="padding: 1rem; border: 1px solid var(--border-color); border-radius: 8px; background: var(--card-bg); text-align: left; font-size: 0.9em; margin-bottom: 15px;">
-        <strong>Flux d'Ingestion :</strong> Script Python (gestionnaire uv) -> Chargement du CSV OPSD brut sur GCS -> Table externe BigQuery (`raw_energy_prices_ext`).<br/>
-        <strong>Pipeline d'Analytique (dbt) :</strong> Transformation & Unpivot (staging) -> Cross Join dynamique avec les profils de PME (seeds) -> Table finale `mart_sme_energy_costs`.<br/>
-        <strong>Optimisation FinOps :</strong> Partitionnement mensuel sur `ts_utc` et clustering par `price_zone` et `segment` dans BigQuery pour optimiser le temps de réponse et diviser par 10 le coût des requêtes de Looker Studio.
-      </div>
+    <div style="margin-bottom: 1.5rem;">
+      <h3 style="color: var(--primary-color); margin-bottom: 0.5rem;">1. Le Problème Business</h3>
+      <p>Les dirigeants de PME subissent la volatilité des prix de gros de l'électricité sans aucune visibilité sur l'impact réel et immédiat sur leurs marges.</p>
+      <img src="assets/images/sme_energy_problem.png" alt="Illustration du problème d'énergie pour les PME" style="width: 100%; max-width: 500px; border-radius: 8px; margin-top: 10px; border: 1px solid var(--border-color); display: block;" />
     </div>
 
-    <p><em>Fonctionnalités clés :</em></p>
-    <ul>
-      <li><strong>Pipeline ELT complet & automatisé :</strong> Ingestion robuste de données horaires de prix d'électricité et exposition sous forme de table externe BigQuery.</li>
-      <li><strong>Modélisation financière granulaire :</strong> Simulation de P&L (chiffre d'affaires requis, coûts totaux, coûts de l'énergie, profit brut) pour 10+ profils d'archetypes de PME.</li>
-      <li><strong>Looker Studio Interactif :</strong> Dashboard dynamique avec filtres géographiques (zones de prix), sectoriels (type de PME) et temporels pour identifier l'exposition au risque.</li>
-      <li><strong>Tests & Qualité des données :</strong> Utilisation rigoureuse de tests dbt (`not_null`, `unique`, seeds) assurant l'intégrité du pipeline avant publication.</li>
-    </ul>
+    <div style="margin-bottom: 1.5rem;">
+      <h3 style="color: var(--primary-color); margin-bottom: 0.5rem;">2. La Solution Apportée</h3>
+      <p>Un dashboard analytique interactif permettant de simuler l'évolution de la marge brute selon le pays et le profil de l'entreprise, tout en optimisant strictement les coûts de la data (FinOps).</p>
+      <p style="margin-top: 10px;">👉 <a href="https://lookerstudio.google.com/reporting/3e8551a0-9426-4143-991a-14f19e0b2a69" target="_blank" rel="noopener" style="font-weight: bold;">Voir la solution Live (Dashboard)</a></p>
+    </div>
 
-    <p><em>Liens :</em>
-      <a href="https://lookerstudio.google.com/reporting/3e8551a0-9426-4143-991a-14f19e0b2a69" target="_blank" rel="noopener">Dashboard Live</a> |
-      <a href="https://github.com/MichaelG-create/energy-risk-dashboard-smes" target="_blank" rel="noopener">Code source &amp; README</a>
-    </p>
+    <div style="margin-bottom: 1.5rem;">
+      <h3 style="color: var(--primary-color); margin-bottom: 0.5rem;">3. Comment ça marche ?</h3>
+      <p>Un pipeline automatisé extrait les données publiques du marché énergétique européen (OPSD), les croise avec des modèles comptables théoriques de PME, et consolide ces données en tables exploitables par la Business Intelligence.</p>
+      <p style="margin-top: 10px;">🔗 <a href="https://github.com/MichaelG-create/energy-risk-dashboard-smes" target="_blank" rel="noopener">Code source (Dépôt GitHub)</a></p>
+    </div>
+
+    <div style="margin-bottom: 1.5rem;">
+      <h3 style="color: var(--primary-color); margin-bottom: 0.5rem;">4. Justification des Choix Techniques</h3>
+      <ul style="padding-left: 1.2rem;">
+        <li style="margin-bottom: 0.5rem;"><strong>GCP & BigQuery :</strong> Le modèle de facturation "à la requête" (Serverless) est idéal et peu coûteux pour de l'analytique ponctuelle par rapport à une base allumée 24/7.</li>
+        <li style="margin-bottom: 0.5rem;"><strong>dbt Core :</strong> Permet de modulariser la logique financière complexe en SQL clair, de la tester (CI/CD), et de garantir la fiabilité des calculs.</li>
+        <li><strong>Clustering & Partitionnement :</strong> Divise par 10 les coûts de requêtage du dashboard en limitant physiquement le volume de données scannées lors des filtrages utilisateurs.</li>
+      </ul>
+    </div>
+
+    <ul class="stack-list" style="margin-top: 1.5rem; margin-bottom: 1.5rem;">
+      <li><strong>Stack :</strong> <span class="tech-tag">GCP</span> <span class="tech-tag">BigQuery</span> <span class="tech-tag">dbt Core</span> <span class="tech-tag">Terraform</span> <span class="tech-tag">Looker Studio</span></li>
+    </ul>
   </article>
 </details>
-
 
 <!-- PROJET 1 - GRADESCALE -->
-<details class="project-details">
+<details class="project-details fade-in-up">
   <summary>
-    GradeScale (<strong>Moteur d'évaluation IA & Infrastructure Cloud Azure</strong>)
+    GradeScale : Moteur d'Évaluation IA
   </summary>
 
-  <article class="hero-block">
-    <img src="assets/images/diagram_cloud.png"
-         alt="Architecture Azure Industrialisée GradeScale"
-         class="hero-image" />
-  </article>
-
   <article class="project-article">
-    <p><em>Objectif :</em> Concevoir une preuve de concept (PoC) d'un moteur d'évaluation formative backend assisté par IA permettant aux enseignants d'analyser de manière granulaire les copies d'élèves (par rubriques et critères, détection des misconceptions), avec une architecture transactionnelle robuste et une infrastructure cloud Azure automatisée.</p>
-
-    <p><em>Stack :</em></p>
-    <ul class="stack-list">
-      <li><strong>Logique Applicative :</strong> Node.js, TypeScript, Fastify, Zod (Structured Outputs & Validation), Prisma ORM, PostgreSQL</li>
-      <li><strong>Cloud Infrastructure (Azure) :</strong> Azure Container Apps (ACA), Azure Static Web Apps (SWA), Azure PostgreSQL Flexible Server, Azure Key Vault</li>
-      <li><strong>Intelligence Artificielle :</strong> Inférence Groq LPU (Modèles Llama 3.3 70B)</li>
-      <li><strong>DevOps & Industrialisation :</strong> Terraform (IaC), Docker (Multi-stage), GitHub Actions (CI/CD), Vitest (QA)</li>
-    </ul>
-
-    <h3>Flux de Données & Évaluation IA</h3>
-    <div class="architecture-diagram">
-      <img src="assets/images/diagram_evaluation_flow.png"
-           alt="Flux d'évaluation IA GradeScale"
-           class="architecture-image" />
-      <div style="margin-top: 15px; font-size: 0.9em; opacity: 0.8;">
-        Workflow de traitement : Soumission de la copie -> Validation de schéma Zod -> Pseudonymisation -> Inférence structurée Groq LPU -> Persistance Prisma dans PostgreSQL Flexible Server.
-      </div>
+    <div style="margin-bottom: 1.5rem;">
+      <h3 style="color: var(--primary-color); margin-bottom: 0.5rem;">1. Le Problème Business</h3>
+      <p>La correction manuelle des copies empêche les enseignants de fournir un feedback personnalisé et granulaire par manque de temps. De plus, envoyer des copies d'élèves à des IA pose d'importants problèmes de confidentialité (RGPD).</p>
+      <img src="assets/images/gradescale_problem.png" alt="Illustration d'un professeur épuisé" style="width: 100%; max-width: 500px; border-radius: 8px; margin-top: 10px; border: 1px solid var(--border-color); display: block;" />
     </div>
 
-    <p><em>Fonctionnalités clés :</em></p>
-    <ul>
-      <li><strong>Domain-Driven Design (DDD) & Modélisation Pédagogique :</strong> Structure hiérarchique dynamique représentant des compétences conceptuelles et analyse sémantique détectant les biais de raisonnement récurrents chez l'élève (misconceptions).</li>
-      <li><strong>Privacy by Design (RGPD) :</strong> Couche de pseudonymisation interceptant et nettoyant les données étudiantes brutes avant leur envoi au fournisseur LLM externe.</li>
-      <li><strong>Sécurité "Zero Secret" :</strong> Authentification sécurisée par Managed Identity (MSI) d'Azure connectant l'API Node.js directement à Azure Key Vault, évitant tout mot de passe en clair dans l'environnement.</li>
-      <li><strong>CI/CD & DevOps complet :</strong> Pipeline automatisé (Vitest, Docker build sur GHCR, Terraform, Déploiement progressif sur ACA/SWA et tests de fumée).</li>
-    </ul>
+    <div style="margin-bottom: 1.5rem;">
+      <h3 style="color: var(--primary-color); margin-bottom: 0.5rem;">2. La Solution Apportée</h3>
+      <p>Un moteur d'évaluation Backend-as-a-Service qui analyse instantanément le raisonnement de l'élève de manière anonymisée, tout en renvoyant à l'enseignant un diagnostic structuré (méconceptions, notes, conseils).</p>
+      <p style="margin-top: 10px;">👉 <a href="https://icy-desert-090b37903.7.azurestaticapps.net/" target="_blank" rel="noopener" style="font-weight: bold;">Tester la solution Live (Interface SWA)</a></p>
+    </div>
 
-    <p><em>Liens :</em>
-      <a href="https://icy-desert-090b37903.7.azurestaticapps.net/" target="_blank" rel="noopener">Interface Live</a> |
-      <a href="https://aca-gradescale-api-dev.wonderfulmoss-37500a79.francecentral.azurecontainerapps.io/" target="_blank" rel="noopener">API Live</a> |
-      <a href="https://github.com/MichaelG-create/grade-scale" target="_blank" rel="noopener">Code source</a>
-    </p>
+    <div style="margin-bottom: 1.5rem;">
+      <h3 style="color: var(--primary-color); margin-bottom: 0.5rem;">3. Comment ça marche ?</h3>
+      <p>L'API reçoit la copie et son barème, pseudonymise les informations personnelles, puis interroge de puissants modèles de langage (LLM) en forçant le format de la réponse, avant d'enregistrer le diagnostic dans une base sécurisée.</p>
+      <img src="assets/images/diagram_cloud.png" alt="Architecture Azure GradeScale" style="width: 100%; max-width: 700px; border-radius: 8px; margin-top: 15px; margin-bottom: 15px; border: 1px solid var(--border-color); display: block;" />
+      <p style="margin-top: 10px;">🔗 <a href="https://github.com/MichaelG-create/grade-scale" target="_blank" rel="noopener">Code source (Dépôt GitHub)</a></p>
+    </div>
+
+    <div style="margin-bottom: 1.5rem;">
+      <h3 style="color: var(--primary-color); margin-bottom: 0.5rem;">4. Justification des Choix Techniques</h3>
+      <ul style="padding-left: 1.2rem;">
+        <li style="margin-bottom: 0.5rem;"><strong>Azure Container Apps :</strong> Une solution Serverless qui s'adapte automatiquement (scale) aux pics de charge imprévisibles liés aux périodes d'examens, tout en gardant des coûts maîtrisés.</li>
+        <li style="margin-bottom: 0.5rem;"><strong>Groq LPU (Llama 3.3) :</strong> Utilisation de processeurs spécialisés (LPU) permettant une inférence ultra-rapide et nettement moins coûteuse que les API propriétaires traditionnelles.</li>
+        <li><strong>Zod & TypeScript :</strong> Strictement nécessaires pour valider le format de données renvoyé par l'IA (Structured Outputs), évitant que l'application ne crashe si l'IA hallucine ou change le format de sa réponse.</li>
+      </ul>
+    </div>
+
+    <ul class="stack-list" style="margin-top: 1.5rem; margin-bottom: 1.5rem;">
+      <li><strong>Stack :</strong> <span class="tech-tag">Node.js</span> <span class="tech-tag">TypeScript</span> <span class="tech-tag">Zod</span> <span class="tech-tag">PostgreSQL</span> <span class="tech-tag">Azure Cloud</span> <span class="tech-tag">Groq LPU</span></li>
+    </ul>
   </article>
 </details>
-
 
 <!-- PROJET 2 - ALPINE LAMBDA TRADE -->
-<details class="project-details">
+<details class="project-details fade-in-up">
   <summary>
-    Alpine Lambda Trade (<strong>Architecture Lambda Haute Performance</strong>)
+    Alpine Lambda Trade : Haute Fréquence
   </summary>
 
-  <article class="hero-block">
-    <img src="assets/images/kafka-grafana-dashboard.png"
-         alt="Architecture Alpine Lambda Trade"
-         class="hero-image" />
-  </article>
-
   <article class="project-article">
-    <p><em>Objectif :</em> Concevoir une <strong>Architecture Lambda (Batch + Speed Layer)</strong> complexe traitant des flux financiers haute fréquence via websockets, avec un fort focus sur le FinOps (optimisation des coûts cloud) et la fiabilité des données (idempotence).</p>
-
-    <p><em>Stack :</em></p>
-    <ul class="stack-list">
-      <li><strong>Cloud & IaC :</strong> AWS (Lambda, S3, SQS), Terraform</li>
-      <li><strong>Data Warehouse :</strong> Snowflake (Snowpipe automatique)</li>
-      <li><strong>Transformations :</strong> dbt Core (Modèles incrémentaux, Tests de Qualité, Architecture Medallion)</li>
-      <li><strong>Streaming :</strong> Producer Asynchrone Python (Binance WebSockets)</li>
-      <li><strong>Serving :</strong> Streamlit</li>
-    </ul>
-
-    <h3>Architecture Haute Disponibilité</h3>
-    <div class="architecture-diagram">
-      <div style="padding: 1rem; border: 1px solid var(--border-color); border-radius: 8px; background: var(--card-bg); text-align: left; font-size: 0.9em; margin-bottom: 15px;">
-        <strong>Flux Temps Réel (Speed) :</strong> Ingestion vers AWS SQS -> AWS Lambda (Calcul EMA/Anomalies en ms) -> Snowflake STG_REALTIME.<br/>
-        <strong>Flux Historique (Batch) :</strong> Bufferisation S3 (Parquet) -> Snowpipe -> dbt (Nettoyage & Déduplication) -> Snowflake SILVER.<br/>
-        Les deux couches fusionnent dynamiquement (UNION ALL) pour la Vue Métier finale sans duplication.
-      </div>
-      <div style="margin-top: 15px; font-size: 0.9em; opacity: 0.8;">
-        Architecture entièrement provisionnée par <strong>Terraform</strong> (IAM roles, SQS, Snowflake Integration).
-      </div>
+    <div style="margin-bottom: 1.5rem;">
+      <h3 style="color: var(--primary-color); margin-bottom: 0.5rem;">1. Le Problème Business</h3>
+      <p>En trading algorithmique haute fréquence, il faut réagir en moins d'une seconde aux pics de volatilité, mais également conserver un historique parfait et sans doublon pour l'entraînement des modèles. Maintenir ces deux besoins génère souvent des silos de données incohérents et des coûts cloud prohibitifs.</p>
+      <img src="assets/images/alpine_trade_problem.png" alt="Illustration d'un trader face à la volatilité" style="width: 100%; max-width: 500px; border-radius: 8px; margin-top: 10px; border: 1px solid var(--border-color); display: block;" />
     </div>
 
-    <p><em>Fonctionnalités clés & Impact Business :</em></p>
-    <ul>
-      <li><strong>Stratégie FinOps :</strong> Remplacement d'Amazon Kinesis par AWS SQS FIFO, réduisant l'empreinte cloud de 80% tout en garantissant l'ordre strict des messages et en éliminant les duplicatas.</li>
-      <li><strong>Qualité & Fiabilité (dbt) :</strong> Pipelines idempotents avec modèles incrémentaux dbt. Utilisation massive de <code>dbt test</code> pour assurer les contraintes d'unicité et de non-nullité.</li>
-      <li><strong>Détection d'anomalies :</strong> Calcul statistique (Bandes de Bollinger) on-the-fly par fonction Lambda Serverless (stateful warm cache).</li>
-      <li><strong>Data Contracts :</strong> Gestion rigoureuse des erreurs asynchrones pour empêcher les corruptions de données (intégration possible de Dead Letter Queues - DLQ).</li>
-    </ul>
-
-    <p><em>Liens :</em>
-      <a href="https://github.com/MichaelG-create/alpine-lambda-trade">Code source (IaC, dbt, Python)</a>
-    </p>
-  </article>
-</details>
-        
-
-<!-- PROJET 1 -->
-<details class="project-details">
-  <summary>
-    Market Data Pipeline Temps Réel (<strong>Kafka & SLI/SLO</strong>)
-  </summary>
-
-  <article class="hero-block">
-    <img src="assets/images/kafka-grafana-dashboard.png"
-         alt="Tableau de bord Grafana du flux Kafka"
-         class="hero-image" />
-  </article>
-
-  <article class="project-article">
-    <p><em>Objectif :</em> Concevoir un <strong>Data Pipeline Temps Réel résilient</strong> de bout en bout pour des indices boursiers (SP500, STOXX600, NIKKEI225), de l’ingestion jusqu’au stockage, à l’API et aux tableaux de bord temps réel sous Linux.</p>
-
-    <p><em>Stack :</em></p>
-    <ul class="stack-list">
-      <li><strong>Streaming :</strong> Kafka (confluent-kafka), producteur/consommateur Python </li>
-      <li><strong>Stockage :</strong> DuckDB</li>
-      <li><strong>API :</strong> Flask (<code>/live</code>, <code>/metrics</code>)</li>
-      <li><strong>Tableaux de bord :</strong> Grafana (datasource Infinity) </li>
-      <li><strong>Runtime :</strong> Docker, Linux/WSL</li>
-      <li><strong>CI :</strong> GitHub Actions (lint + tests de fumée)</li>
-    </ul>
-
-    <h3>Architecture de streaming</h3>
-    <div class="architecture-diagram">
-      <img
-        src="assets/images/kafka-grafana-workflow.png"
-        alt="Pipeline de streaming d’indices, du CSV via Kafka et DuckDB jusqu’à l’API Flask et Grafana"
-        class="architecture-image"
-      />
-      <div style="margin-top: 15px; font-size: 0.9em; opacity: 0.8%;">
-        Inclut des <strong>métriques d'observabilité (SLI/SLO)</strong>, des logs JSON structurés et des <strong>tests de fumée CI</strong> (GitHub Actions).
-      </div>
+    <div style="margin-bottom: 1.5rem;">
+      <h3 style="color: var(--primary-color); margin-bottom: 0.5rem;">2. La Solution Apportée</h3>
+      <p>Une infrastructure de données séparée en deux voies (Architecture Lambda) : une voie "Speed" pour les alertes instantanées et une voie "Batch" pour le stockage froid et l'auditabilité parfaite de l'historique.</p>
     </div>
 
-    <p><em>Fonctionnalités clés :</em></p>
-    <ul>
-      <li><strong>Streaming de bout en bout :</strong> Flux (mockés) ingérés dans Kafka avec architecture de résilience et persistés dans DuckDB utilisant des stratégies de Dead Letter.</li>
-      <li><strong>API temps réel :</strong> Endpoints Flask exposant prix, volumes et agrégats en JSON.</li>
-      <li><strong>Observabilité robuste :</strong> Métriques de run (messages traités, erreurs, durée, timestamp max) stockées dans DuckDB et loggées en JSON.</li>
-      <li><strong>Tableaux de bord Grafana :</strong> Datasource Infinity interrogeant l’API pour afficher prix temps réel, volumes et tableaux de synthèse. </li>
-      <li><strong>Pratiques DevOps :</strong> Kafka sous Docker, script bash <code>runpipeline.sh</code> et pipeline CI GitHub Actions pour valider le flux de bout en bout.</li>
-    </ul>
-
-    <p><em>Liens :</em>
-      <a href="https://github.com/MichaelG-create/kafka-market-stream">Code source &amp; README</a>
-    </p>
-  </article>
-</details>
-
-<!-- PROJET 2 -->
-<details class="project-details">
-  <summary>
-    Sectoral - Pipeline d’analyse sectorielle automatisée
-  </summary>
-
-  <article class="hero-block">
-    <img src="assets/images/sectoral-hero.png"
-         alt="Illustration du pipeline de données financières"
-         class="hero-image" />
-  </article>
-
-  <article class="project-article">
-    <p><em>Objectif :</em> Automatiser l’analyse des performances sectorielles des marchés financiers pour optimiser les stratégies d’investissement et détecter les opportunités de rotation sectorielle. Le pipeline intègre la <strong>Modélisation Medallion (Star Schema)</strong> pour une scalabilité analytique optimale. </p>
-
-    <p><em>Stack :</em></p>
-    <ul class="stack-list">
-      <li><strong>Orchestration :</strong> Apache Airflow (MWAA)</li>
-      <li><strong>Infrastructure :</strong> Terraform, AWS S3, Redshift</li>
-      <li><strong>Transformations :</strong> dbt Core (modélisation &amp; tests) </li>
-      <li><strong>Langage :</strong> Python (pandas, yfinance)</li>
-      <li><strong>Monitoring :</strong> CloudWatch</li>
-    </ul>
-
-    <h3>Workflow</h3>
-    <div class="architecture-diagram">
-      <img
-        src="assets/images/sectoral-workflow.png"
-        alt="Workflow ELT cloud : APIs financières, S3, dbt et Redshift jusqu’aux analyses"
-        class="architecture-image"
-      />
-      <div style="margin-top: 15px; font-size: 0.9em; opacity: 0.8%;">
-        Orchestré par <strong>Apache Airflow</strong> sur AWS MWAA, provisionné avec <strong>Terraform</strong>, avec qualité des données et traçabilité gérées par <strong>dbt</strong>. 
-      </div>
+    <div style="margin-bottom: 1.5rem;">
+      <h3 style="color: var(--primary-color); margin-bottom: 0.5rem;">3. Comment ça marche ?</h3>
+      <p>Les transactions boursières sont captées en direct via WebSockets. Ce flux est scindé : l'un déclenche des analyses de volatilité immédiates via des fonctions Serverless, tandis que l'autre est stocké massivement "à froid" puis dédoublonné et consolidé.</p>
+      <p style="margin-top: 10px;">🔗 <a href="https://github.com/MichaelG-create/alpine-lambda-trade" target="_blank" rel="noopener">Code source (Dépôt GitHub)</a></p>
     </div>
 
-    <h3>Métriques business générées</h3>
-    <div class="metrics-grid">
-      <div class="metric-item">
-        <div class="metric-value">500+</div>
-        <div>Actions analysées</div>
-      </div>
-      <div class="metric-item">
-        <div class="metric-value">11</div>
-        <div>Secteurs couverts</div>
-      </div>
-      <div class="metric-item">
-        <div class="metric-value">90%+</div>
-        <div>Couverture de tests</div>
-      </div>
-      <div class="metric-item">
-        <div class="metric-value">Daily</div>
-        <div>Automatisation</div>
-      </div>
+    <div style="margin-bottom: 1.5rem;">
+      <h3 style="color: var(--primary-color); margin-bottom: 0.5rem;">4. Justification des Choix Techniques</h3>
+      <ul style="padding-left: 1.2rem;">
+        <li style="margin-bottom: 0.5rem;"><strong>AWS SQS FIFO (au lieu de Kinesis) :</strong> Transition purement FinOps. SQS offre une facturation à l'usage et garantit l'ordre des messages financiers, réduisant la facture Cloud de 80% face à Kinesis qui nécessite une allocation continue.</li>
+        <li style="margin-bottom: 0.5rem;"><strong>AWS Lambda (Speed Layer) :</strong> Déclenchement instantané à chaque message reçu pour un calcul de volatilité ultra-rapide (Bandes de Bollinger) avec maintien de l'état en mémoire (Warm Start).</li>
+        <li><strong>Snowflake & dbt (Batch Layer) :</strong> Snowflake est conçu pour le stockage analytique massif, tandis que dbt permet de garantir l'idempotence des données (purger les doublons causés par les micro-coupures réseau) via des modèles incrémentaux.</li>
+      </ul>
     </div>
 
-    <p><em>Fonctionnalités clés :</em></p>
-    <ul>
-      <li><strong>Architecture Medallion :</strong> Structuration en couches Bronze/Silver/Gold avec un <strong>Star Schema</strong> (tables de faits et de dimensions) sur Redshift. </li>
-      <li><strong>Qualité des données :</strong> Tests dbt et documentation de la <strong>traçabilité (lineage)</strong> pour des analyses fiables. </li>
-      <li><strong>Analyse de performance :</strong> Rendements sectoriels, momentum et performances relatives.</li>
-      <li><strong>Gestion du risque :</strong> Volatilité, VaR et ratios de Sharpe par secteur.</li>
-      <li><strong>Analyse de corrélation :</strong> Matrices inter‑sectorielles et détection de régimes de marché.</li>
+    <ul class="stack-list" style="margin-top: 1.5rem; margin-bottom: 1.5rem;">
+      <li><strong>Stack :</strong> <span class="tech-tag">AWS (SQS, S3, Lambda)</span> <span class="tech-tag">Python Async</span> <span class="tech-tag">Snowflake</span> <span class="tech-tag">dbt Core</span></li>
     </ul>
-
-    <p><em>Liens :</em>
-      <a href="https://github.com/MichaelG-create/Sectoral">Code source &amp; documentation</a> |
-      <a href="https://github.com/MichaelG-create/Sectoral/blob/master/sectoral-detailed-readme.md">README détaillé</a>
-    </p>
-  </article>
-</details>
-
-<!-- PROJET 3 -->
-<details class="project-details">
-  <summary>
-    Suivi d’affluence en agence bancaire (<strong>Pipeline PySpark</strong>)
-  </summary>
-
-  <article class="hero-block hero-block-cycle">
-    <div class="hero-images-wrapper">
-      <!-- Spacer : garde la hauteur, aucun visuel -->
-      <img src="assets/images/webapp-multiple-agencies-screenshot.png"
-          alt=""
-          class="hero-image hero-image-spacer" />
-
-
-      <!-- 2 captures qui se superposent et alternent -->
-      <img src="assets/images/webapp-multiple-agencies-screenshot.png"
-          alt="Application web d'affluence bancaire affichant plusieurs agences"
-          class="hero-image hero-image-primary" />
-      <img src="assets/images/webapp-single-agency-screenshot.png"
-          alt="Application web d'affluence bancaire focalisée sur une seule agence"
-          class="hero-image hero-image-secondary" />
-    </div>
-  </article>
-
-  <article class="project-article">
-    <p><em>Objectif :</em> Automatiser le suivi et l’analyse du trafic en agence bancaire afin de permettre l’<strong>optimisation de l’allocation des ressources</strong> (effectifs) en quasi temps réel.</p>
-
-    <p><em>Stack :</em></p>
-    <ul class="stack-list">
-      <li><strong>Ingestion / API :</strong> FastAPI</li>
-      <li><strong>Traitement :</strong> PySpark</li>
-      <li><strong>Orchestration :</strong> Airflow</li>
-      <li><strong>Stockage :</strong> DuckDB (Serving OLAP) / Parquet Data Lake</li>
-      <li><strong>Visualisation :</strong> Streamlit (application publique)</li>
-      <li><strong>Conteneurisation :</strong> Docker</li>
-    </ul>
-
-    <h3>Workflow</h3>
-    <div class="architecture-diagram">
-      <img
-        src="assets/images/bank-footfall-workflow.png"
-        alt="Workflow d’affluence bancaire : capteurs et FastAPI, PySpark et DuckDB jusqu’au dashboard Streamlit"
-        class="architecture-image"
-      />
-      <div style="margin-top: 15px; font-size: 0.9em; opacity: 0.8%;">
-        Ingestion via <strong>FastAPI</strong>, lourds batchs <strong>PySpark</strong> distribués (exportés en parquet/iceberg), orchestrés par <strong>Airflow</strong>, et servis (layer OLAP) avec <strong>DuckDB</strong> in-process accelerateur et exposées aux analystes via un dashboard <strong>Streamlit</strong>.
-      </div>
-    </div>
-
-    <p><em>Fonctionnalités clés :</em></p>
-    <ul>
-      <li><strong>Traitement à grande échelle :</strong> Jobs PySpark gérant des reprocess massifs (Backfills) et calculant des agrégats historisés (pics, moyennes, fenêtres glissantes) par agence et par plage horaire.</li>
-      <li><strong>Intégration API :</strong> Endpoint FastAPI retournant les compteurs de visiteurs par agence pour les équipes opérationnelles.</li>
-      <li><strong>Analyse de scénarios :</strong> Dashboard Streamlit permettant de comparer les agences, identifier les périodes de pointe et tester différents scénarios de staffing.</li>
-      <li><strong>Workflows orchestrés :</strong> DAGs Airflow pour l’ingestion quasi temps réel et les recalculs historiques.</li>
-    </ul>
-
-    <p><em>Liens :</em>
-      <a href="https://bank-branch-footfall.streamlit.app/">App live</a> |
-      <a href="https://bank-branch-footfall.onrender.com/get_visitor_count?date_time=2025-05-29%2009:05&agency_name=Aix_les_bains_1">API live</a> |
-      <a href="https://github.com/michaelg-create/bank-branch-footfall">Code source</a>
-    </p>
   </article>
 </details>

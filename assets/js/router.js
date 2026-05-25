@@ -40,6 +40,11 @@ async function loadContent() {
                 
                 // Update the page title
                 pageTitle.textContent = `Portfolio - ${page.title}`;
+
+                // Re-initialize animations for newly loaded content
+                if (typeof window.initAnimations === 'function') {
+                    window.initAnimations();
+                }
             } catch (error) {
                 console.error(`Error loading content for #${hash} in ${lang}:`, error);
                 appContent.innerHTML = `<h1>404</h1><p>Page not found or failed to load content.</p>`;
