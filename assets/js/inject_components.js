@@ -26,9 +26,9 @@ async function loadComponent(elementId, componentPath) {
             // inject the new HTML *near* where the old ID was.
             
             // To be 100% safe and simple, let's target the *first* element that 
-            // looks like the previous component's root (e.g., the <header> or <aside>).
+            // looks like the previous component's root (e.g., the <header> or <footer>).
 
-            const newRootSelector = (elementId === 'header-placeholder') ? 'header.top-banner' : 'aside.side-banner';
+            const newRootSelector = (elementId === 'header-placeholder') ? 'header.top-banner' : 'footer.site-footer';
             const existingRoot = document.querySelector(newRootSelector);
 
             if (existingRoot) {
@@ -53,8 +53,8 @@ function initializeComponents() {
     // Load Header component
     loadComponent('header-placeholder', `components/header${langSuffix}.html`); 
 
-    // Load Sidebar component
-    loadComponent('sidebar-placeholder', `components/sidebar${langSuffix}.html`);
+    // Load Footer component
+    loadComponent('footer-placeholder', `components/footer${langSuffix}.html`);
 }
 
 // Assurez-vous que le DOM est chargé avant d'initialiser les composants
