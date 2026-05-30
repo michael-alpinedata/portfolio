@@ -177,6 +177,7 @@ html {
   margin: 20px auto;
   min-height: 70vh;
   gap: 20px;
+  padding-top: 5rem; /* Add padding to prevent content from being hidden under the sticky header */
 }
 
 .content-area {
@@ -201,6 +202,10 @@ html {
   width: 100%;
   padding: 12px 20px;
   box-sizing: border-box;
+  position: sticky; /* Make the header sticky */
+  top: 0;          /* Stick it to the top */
+  z-index: 1000;   /* Ensure it stays on top of other content */
+  box-shadow: var(--main-shadow); /* Use existing shadow variable for consistency */
 }
 
 .top-nav {
@@ -223,6 +228,28 @@ html {
   background-color: var(--bg-color);
   color: var(--primary-color);
   border-radius: 6px;
+}
+
+.social-icons {
+  display: flex;
+  align-items: center;
+  margin: 0 10px; /* Add some margin around the group of icons */
+}
+
+.social-icons a {
+  color: var(--text-color);
+  font-size: 1.2rem;
+  transition: color 0.3s ease;
+  margin: 0 0.5rem; /* Space between icons */
+  /* Remove default link underline and background hover from .top-nav a */
+  text-decoration: none; 
+  background-color: transparent;
+  padding: 0; /* Remove padding inherited from .top-nav a */
+}
+
+.social-icons a:hover {
+  color: var(--primary-color); /* Assuming --primary-color is an accent color */
+  background-color: transparent; /* Ensure no background on hover for icons */
 }
 
 .theme-toggle-btn {
