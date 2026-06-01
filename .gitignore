@@ -2,3 +2,5 @@
 .agents/
 plan/
 codebases/
+.aider*
+.env
