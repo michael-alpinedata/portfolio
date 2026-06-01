@@ -6,12 +6,12 @@
 // Define routes: key = hash, value = object with page path and title
 const routes = {
     'home': { fr: { path: 'pages/fr/home.html', title: 'Accueil' }, en: { path: 'pages/en/home.html', title: 'Home' } },
+    'actu': { fr: { path: 'pages/fr/actu.html', title: 'Actualités' }, en: { path: 'pages/en/news.html', title: 'News' } }, // <-- Nouvelle route
     'projets': { fr: { path: 'pages/fr/projets.html', title: 'Projets' }, en: { path: 'pages/en/projects.html', title: 'Projects' } },
     'cv': { fr: { path: 'pages/fr/cv.html', title: 'CV' }, en: { path: 'pages/en/resume.html', title: 'Resume' } },
     'about': { fr: { path: 'pages/fr/about.html', title: 'À propos' }, en: { path: 'pages/en/about.html', title: 'About' } },
     'contact': { fr: { path: 'pages/fr/contact.html', title: 'Contact' }, en: { path: 'pages/en/contact.html', title: 'Contact' } },
     'legal': { fr: { path: 'pages/fr/legal.html', title: 'Mentions Légales' }, en: { path: 'pages/en/legal.html', title: 'Legal Notice' } },
-    // Add new routes here
 };
 
 const appContent = document.getElementById('app-content');
