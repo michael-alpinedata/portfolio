@@ -1,4 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+/* ==========================================================================
+   1. VARIABLES & THÈMES (Strictement d'origine pour ton JS)
+   ========================================================================== */
 
 :root {
   --bg-color: #f8fafc;
@@ -66,6 +68,16 @@
   --glass-blur: blur(12px);
 }
 
+/* ==========================================================================
+   2. BASES & TYPOGRAPHIE
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+html {
+  overflow-y: scroll;
+}
+
 body {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   font-size: 1rem;
@@ -100,62 +112,20 @@ em {
   font-weight: 500;
 }
 
-/* ============================= */
-/* Headings                      */
-/* ============================= */
+/* Headings */
+h1 { font-size: 2.25rem; margin-bottom: 1rem; color: var(--title-color); }
+h2 { font-size: 1.75rem; margin-bottom: 0.8rem; color: var(--title-color); }
+h3 { font-size: 1.375rem; margin-bottom: 0.6rem; color: var(--title-color); margin-top: 25px; }
 
-h1 {
-  font-size: 2.25rem;
-  margin-bottom: 1rem;
-  color: var(--title-color);
-}
+/* Lists */
+ul, ol { padding-left: 1.5rem; margin-bottom: 1.2rem; }
+li { margin-bottom: 0.5rem; line-height: 1.5; }
 
-h2 {
-  font-size: 1.75rem;
-  margin-bottom: 0.8rem;
-  color: var(--title-color);
-}
+/* Links */
+a { color: var(--accent-color); text-decoration: none; font-weight: 500; }
+a:hover { text-decoration: underline; }
 
-h3 {
-  font-size: 1.375rem;
-  margin-bottom: 0.6rem;
-  color: var(--title-color);
-  margin-top: 25px;
-}
-
-/* ============================= */
-/* Lists                         */
-/* ============================= */
-
-ul,
-ol {
-  padding-left: 1.5rem;
-  margin-bottom: 1.2rem;
-}
-
-li {
-  margin-bottom: 0.5rem;
-  line-height: 1.5;
-}
-
-/* ============================= */
-/* Links                         */
-/* ============================= */
-
-a {
-  color: var(--accent-color);
-  text-decoration: none;
-  font-weight: 500;
-}
-
-a:hover {
-  text-decoration: underline;
-}
-
-/* ============================= */
-/* Spacing helpers               */
-/* ============================= */
-
+/* Spacing helpers */
 .mt-2 { margin-top: 0.5rem; }
 .mt-4 { margin-top: 1rem; }
 .mt-6 { margin-top: 1.5rem; }
@@ -163,73 +133,78 @@ a:hover {
 .mb-4 { margin-bottom: 1rem; }
 .mb-6 { margin-bottom: 1.5rem; }
 
-/* ============================= */
-/* Global layout                 */
-/* ============================= */
-
-html {
-  overflow-y: scroll;
-}
+/* ==========================================================================
+   3. GLOBAL LAYOUT (Adapté Full-Width sans Sidebar)
+   ========================================================================== */
 
 .main-content {
-  display: flex;
-  max-width: 1200px;
+  display: block;            /* Plus de flex horizontal vu qu'il n'y a plus de sidebar */
+  max-width: 1000px;         /* Centré et resserré pour éviter le vide */
   margin: 20px auto;
   min-height: 70vh;
-  gap: 20px;
-  padding-top: 6.5rem; /* Augmenté pour éviter les chevauchements dus au header à 2 lignes */
+  padding-top: 0;         /* Ajusté pour la hauteur fixe du header slim (60px) */
 }
 
 .content-area {
-  flex-grow: 1;
+  width: 100%;
   background: var(--card-bg);
   backdrop-filter: var(--glass-blur);
   -webkit-backdrop-filter: var(--glass-blur);
-  padding: 20px;
+  padding: 30px;
   box-sizing: border-box;
   box-shadow: var(--main-shadow);
   border: 1px solid var(--border-color);
   border-radius: 8px;
 }
 
-/* ============================= */
-/* Top banner / nav (Strict Overrides)[cite: 1] */
-/* ============================= */
+/* ==========================================================================
+   4. TOP BANNER / NAVIGATION (Version Slim Intégrée)
+   ========================================================================== */
 
 .top-banner {
-  background-color: var(--header-bg) !important; /* Force l'opacité totale de l'arrière-plan[cite: 1] */
-  backdrop-filter: none !important;             /* Désactive l'effet de flou translucide sous le menu[cite: 1] */
-  -webkit-backdrop-filter: none !important;
+  height: 60px;
+  background-color: var(--header-bg) !important;
   border-bottom: 1px solid var(--border-color);
   width: 100%;
-  padding: 10px 20px;
-  box-sizing: border-box;
-  position: sticky; /* Menu fixe au défilement[cite: 1] */
+  position: sticky;
   top: 0;          
   z-index: 1000;   
   box-shadow: var(--main-shadow); 
+  display: flex;
+  align-items: center;
 }
 
 .top-nav {
+  width: 100%;
   max-width: 1200px;
   margin: 0 auto;
+  padding: 0 20px;
   display: flex;
-  flex-direction: column; /* Force la distribution des éléments sur 2 lignes horizontales[cite: 1] */
-  gap: 10px;
+  align-items: center;
+  box-sizing: border-box;
 }
 
-/* Ligne supérieure du header (Navigation, Icônes et Contrôles)[cite: 1] */
-.header-line-top {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
+.brand-title {
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: var(--title-color);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  flex: 1;
+}
+.brand-title:hover { text-decoration: none; color: var(--primary-color); }
+
+/* L'astuce magique pour l'ordinateur : le conteneur s'efface pour laisser le Flex du parent bosser */
+.nav-scroll-container {
+  display: contents;
 }
 
 .header-nav-links {
   display: flex;
   align-items: center;
   gap: 5px;
+  flex: 2;
+  justify-content: center;
 }
 
 .header-nav-links a {
@@ -246,53 +221,16 @@ html {
   border-radius: 6px;
 }
 
-/* Icônes de contact ajustées au même niveau sur la ligne du haut[cite: 1] */
-.social-icons {
-  display: flex;
-  align-items: center;
-  gap: 15px;
-  margin: 0 20px;
-}
-
-/* Style des icônes hérité et calqué sur la section Contact[cite: 1] */
-.social-icons a {
-  font-size: 1.3rem;
-  color: var(--text-color);
-  opacity: 0.8;
-  transition: all 0.2s ease;
-  display: inline-flex;
-  align-items: center;
-  padding: 0;
-  background: transparent;
-  text-decoration: none;
-}
-
-.social-icons a:hover {
-  color: var(--primary-color) !important;
-  opacity: 1;
-  transform: translateY(-2px);
-  background: transparent !important;
-}
-
-.social-icons a svg {
-  vertical-align: middle;
-}
-
 .header-controls {
   display: flex;
   align-items: center;
   gap: 12px;
+  flex: 1;
+  justify-content: flex-end;
 }
 
-.lang-selector {
-  font-size: 0.9rem;
-  font-weight: 600;
-  color: var(--text-color);
-}
-
-.lang-selector a {
-  color: var(--title-color);
-}
+.lang-selector { font-size: 0.9rem; font-weight: 600; color: var(--title-color); }
+.lang-selector a { color: var(--title-color); }
 
 .theme-toggle-btn {
   display: inline-flex;
@@ -307,36 +245,16 @@ html {
 
 .theme-toggle-btn:hover {
   color: var(--primary-color) !important;
-  background-color: transparent !important;
   transform: rotate(15deg);
 }
 
-/* Ligne inférieure du header (Titre de marque Alpine Data)[cite: 1] */
-.header-line-bottom {
-  display: flex;
-  justify-content: flex-start;
-  width: 100%;
-  padding-left: 15px;
-  border-top: 1px solid var(--border-color);
-  padding-top: 8px;
-}
+.social-icons { display: flex; align-items: center; gap: 15px; margin: 0 20px; }
+.social-icons a { font-size: 1.3rem; color: var(--text-color); opacity: 0.8; transition: all 0.2s ease; display: inline-flex; align-items: center; }
+.social-icons a:hover { color: var(--primary-color) !important; opacity: 1; transform: translateY(-2px); }
 
-.brand-title {
-  font-size: 1.1rem;
-  font-weight: 700;
-  color: var(--title-color);
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-}
-
-.brand-title:hover {
-  text-decoration: none;
-  color: var(--primary-color);
-}
-
-/* ============================= */
-/* Sidebar                       */
-/* ============================= */
+/* ==========================================================================
+   5. SIDEBAR (Sauvegardée en totalité)
+   ========================================================================== */
 
 .profile-photo {
   width: clamp(150px, 20vw, 200px); 
@@ -348,68 +266,26 @@ html {
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.1); 
 }
 
-.name {
+.name, .desc {
   font-weight: 600;
   text-align: center;
   font-size: 1.1em;
   margin: 0 0 0.2em 0;
   color: var(--title-color);
 }
+.desc { margin: 0 0 15px 0; color: var(--text-color); }
 
-.desc {
-  font-weight: 600;
-  text-align: center;
-  font-size: 1.1em;
-  margin: 0 0 15px 0;
-  color: var(--text-color);
-}
+.location-info p { margin: 4px 0; font-size: 0.85em; text-align: center; color: var(--text-color); opacity: 0.85; }
+.location-info i { color: var(--primary-color); margin-right: 6px; width: 16px; }
 
-.location-info p {
-  margin: 4px 0;
-  font-size: 0.85em;
-  text-align: center;
-  color: var(--text-color);
-  opacity: 0.85;
-}
+.social-links { display: flex; justify-content: center; gap: 15px; margin-top: 15px; padding-top: 15px; border-top: 1px solid var(--border-color); }
+.social-links a { font-size: 1.3em; color: var(--text-color); opacity: 0.8; transition: all 0.2s ease; }
+.social-links a:hover { color: var(--primary-color); opacity: 1; transform: translateY(-2px); }
+.social-links .sidebar-icon { width: 1.3em; height: 1.3em; color: inherit; margin-top: 2px; }
 
-.location-info i {
-  color: var(--primary-color);
-  margin-right: 6px;
-  width: 16px;
-}
-
-.social-links {
-  display: flex;
-  justify-content: center;
-  gap: 15px;
-  margin-top: 15px;
-  padding-top: 15px;
-  border-top: 1px solid var(--border-color);
-}
-
-.social-links a {
-  font-size: 1.3em;
-  color: var(--text-color);
-  opacity: 0.8;
-  transition: all 0.2s ease;
-}
-
-.social-links a:hover {
-  color: var(--primary-color);
-  opacity: 1;
-  transform: translateY(-2px);
-}
-
-.social-links .sidebar-icon {
-  width: 1.3em;
-  height: 1.3em;
-  color: inherit;
-  margin-top: 2px;
-}
-
-/* ============================= */
-/* Images / hero                 */
-/* ============================= */
+/* ==========================================================================
+   6. IMAGES, HERO BLOCK & ANIMATIONS DE CYCLE (Restaurés)
+   ========================================================================== */
 
 .banner-image {
   border-radius: 16px;
@@ -422,53 +298,16 @@ html {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
-.align-left {
-  float: left;
-  border-radius: 16px;
-  object-fit: cover;
-  display: block;
-  margin: 20px auto;
-}
+.align-left { float: left; border-radius: 16px; object-fit: cover; display: block; margin: 20px auto; }
+.content-area img { max-width: 100%; height: auto; display: block; margin: 20px auto; }
 
-.content-area img {
-  max-width: 100%;
-  height: auto;
-  display: block;
-  margin: 20px auto;
-}
-
-.hero-block {
-  width: 100%;
-  margin: 0 0 1rem 0;
-  text-align: center;
-}
-
-.hero-block h2 {
-  display: block;
-  border: none;
-  padding-bottom: 10px;
-  margin-bottom: 20px;
-}
-
-.hero-image {
-  width: 100%;
-  border-radius: 12px;
-  display: block;
-}
-
-.hero-profile-photo {
-  margin: 0 auto 20px auto; 
-  display: block; 
-}
+.hero-block { width: 100%; margin: 0 0 1rem 0; text-align: center; }
+.hero-block h2 { display: block; border: none; padding-bottom: 10px; margin-bottom: 20px; }
+.hero-image { width: 100%; border-radius: 12px; display: block; }
+.hero-profile-photo { margin: 0 auto 20px auto; display: block; }
 
 /* Hero image fading / blinking */
-.hero-block-cycle .hero-images-wrapper {
-  position: relative;
-  width: 100%;
-  max-width: 100%;
-  margin: 0 auto 1rem auto;
-}
-
+.hero-block-cycle .hero-images-wrapper { position: relative; width: 100%; max-width: 100%; margin: 0 auto 1rem auto; }
 .hero-block-cycle .hero-image-primary,
 .hero-block-cycle .hero-image-secondary {
   position: absolute;
@@ -482,38 +321,17 @@ html {
   animation-timing-function: ease-in-out;
 }
 
-.hero-block-cycle .hero-image-primary {
-  animation-name: heroFadePrimary;
-}
+.hero-block-cycle .hero-image-primary { animation-name: heroFadePrimary; }
+.hero-block-cycle .hero-image-secondary { animation-name: heroFadeSecondary; }
 
-.hero-block-cycle .hero-image-secondary {
-  animation-name: heroFadeSecondary;
-}
+@keyframes heroFadePrimary { 0%, 40% { opacity: 1; } 50%, 100% { opacity: 0; } }
+@keyframes heroFadeSecondary { 0%, 40% { opacity: 0; } 50%, 100% { opacity: 1; } }
 
-@keyframes heroFadePrimary {
-  0%, 40%   { opacity: 1; }
-  50%, 100% { opacity: 0; }
-}
+.hero-block-cycle .hero-image-spacer { display: block; width: 100%; height: auto; visibility: hidden; opacity: 0; border: none; margin: 0; padding: 0; }
 
-@keyframes heroFadeSecondary {
-  0%, 40%   { opacity: 0; }
-  50%, 100% { opacity: 1; }
-}
-
-.hero-block-cycle .hero-image-spacer {
-  display: block;
-  width: 100%;
-  height: auto;
-  visibility: hidden;   
-  opacity: 0;           
-  border: none;
-  margin: 0;
-  padding: 0;
-}
-
-/* ============================= */
-/* Metrics grid                  */
-/* ============================= */
+/* ==========================================================================
+   7. METRICS & DIAGRAMS (Restaurés)
+   ========================================================================== */
 
 .metrics-grid {
   display: grid;
@@ -527,52 +345,18 @@ html {
   border-radius: 8px;
   border: 1px solid var(--border-color);
 }
+.metric-item { text-align: center; }
+.metric-value { font-size: 1.25em; font-weight: bold; color: #10b981; }
 
-.metric-item {
-  text-align: center;
-  padding: 10px;
-}
+/* Architecture diagram */
+.architecture-diagram { text-align: center; margin: 2rem 0; }
+.architecture-diagram .flow-step { display: inline-block; margin: 4px 8px; padding: 6px 12px; background: rgba(255, 255, 255, 0.18); border-radius: 18px; font-size: 0.9em; border: 1px solid rgba(255, 255, 255, 0.35); }
+.architecture-diagram .arrow { font-size: 1.2em; margin: 0 6px; opacity: 0.9; }
+.architecture-image { max-width: 100%; height: auto; border-radius: 8px; }
 
-.metric-value {
-  font-size: 1.25em;
-  font-weight: bold;
-  color: #10b981;
-}
-
-/* ============================= */
-/* Architecture diagram          */
-/* ============================= */
-
-.architecture-diagram {
-  text-align: center;
-  margin: 2rem 0;
-}
-
-.architecture-diagram .flow-step {
-  display: inline-block;
-  margin: 4px 8px;
-  padding: 6px 12px;
-  background: rgba(255, 255, 255, 0.18);
-  border-radius: 18px;
-  font-size: 0.9em;
-  border: 1px solid rgba(255, 255, 255, 0.35);
-}
-
-.architecture-diagram .arrow {
-  font-size: 1.2em;
-  margin: 0 6px;
-  opacity: 0.9;
-}
-
-.architecture-image {
-  max-width: 100%;
-  height: auto;
-  border-radius: 8px;
-}
-
-/* ============================= */
-/* Collapsible project sections  */
-/* ============================= */
+/* ==========================================================================
+   8. PROJECT SECTIONS & STACKS (Restaurés)
+   ========================================================================== */
 
 .project-details {
   margin-bottom: 2rem;
@@ -585,16 +369,8 @@ html {
   padding: 0.5rem 1.5rem 1.5rem;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
-
-.project-details:hover {
-  transform: translateY(-2px);
-  box-shadow: var(--hover-shadow);
-}
-
-.project-details > summary::-webkit-details-marker {
-  display: none;
-}
-
+.project-details:hover { transform: translateY(-2px); box-shadow: var(--hover-shadow); }
+.project-details > summary::-webkit-details-marker { display: none; }
 .project-details > summary {
   list-style: none;
   cursor: pointer;
@@ -606,81 +382,21 @@ html {
   margin-bottom: 0.9rem;
   transition: color 0.2s ease;
 }
+.project-details > summary:hover { color: var(--primary-color); }
+.project-details > summary::before { content: "▸"; display: inline-block; margin-right: 0.5rem; font-size: 0.9rem; color: var(--primary-color); transition: transform 0.2s ease; }
+.project-details[open] > summary::before { transform: rotate(90deg); }
 
-.project-details > summary:hover {
-  color: var(--primary-color);
-}
+.project-article { margin-bottom: 1.5rem; padding: 0 0 0.5rem 0; }
+.project-article p em { font-style: normal; font-weight: 600; color: var(--accent-color); text-transform: uppercase; letter-spacing: 0.03em; display: inline-block; margin-bottom: 0.15rem; }
+.project-article ul { margin-top: 0.25rem; }
+.project-article ul li > strong { color: var(--title-color); font-weight: 700; }
+.project-article p em + a, .project-article p em + span a { font-weight: 600; }
 
-.project-details > summary::before {
-  content: "▸";
-  display: inline-block;
-  margin-right: 0.5rem;
-  font-size: 0.9rem;
-  color: var(--primary-color);
-  transition: transform 0.2s ease;
-}
+.stack-list { margin: 0 0 1rem 0; padding-left: 1.2rem; font-size: 0.95rem; }
+.stack-list li { margin-bottom: 0.4rem; display: flex; flex-wrap: wrap; align-items: center; gap: 5px; }
+.stack-list li > strong { margin-right: 8px; color: var(--title-color); font-weight: 700; }
 
-.project-details[open] > summary::before {
-  transform: rotate(90deg);
-}
-
-/* ============================= */
-/* Project sections / stacks     */
-/* ============================= */
-
-.project-article {
-  margin-bottom: 1.5rem;
-  padding: 0 0 0.5rem 0;
-}
-
-.project-article p em {
-  font-style: normal;
-  font-weight: 600;
-  color: var(--accent-color); 
-  text-transform: uppercase;
-  letter-spacing: 0.03em;
-  display: inline-block;
-  margin-bottom: 0.15rem;
-}
-
-.project-article ul {
-  margin-top: 0.25rem;
-}
-
-.project-article ul li > strong {
-  color: var(--title-color);        
-  font-weight: 700;
-}
-
-.project-article p em + a,
-.project-article p em + span a {
-  font-weight: 600;
-}
-
-.stack-list {
-  margin: 0 0 1rem 0;
-  padding-left: 1.2rem;
-  font-size: 0.95rem;
-}
-
-.stack-list li {
-  margin-bottom: 0.4rem;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 5px;
-}
-
-.stack-list li > strong {
-  margin-right: 8px;
-  color: var(--title-color);
-  font-weight: 700;
-}
-
-/* ============================= */
-/* Tech Tags                     */
-/* ============================= */
-
+/* Tech Tags */
 .tech-tag {
   display: inline-block;
   padding: 2px 8px;
@@ -693,61 +409,82 @@ html {
   margin: 2px 4px 2px 0;
   transition: all 0.2s ease;
 }
+.tech-tag:hover { background: rgba(14, 165, 233, 0.2); transform: translateY(-1px); }
 
-.tech-tag:hover {
-  background: rgba(14, 165, 233, 0.2);
-  transform: translateY(-1px);
-}
+/* ==========================================================================
+   9. UTILITIES & ANIMATIONS
+   ========================================================================== */
 
-/* ============================= */
-/* Utilities & Animations        */
-/* ============================= */
+.nowrap { white-space: nowrap; }
+.fade-in-up { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
+.fade-in-up.visible { opacity: 1; transform: translateY(0); }
 
-.nowrap {
-  white-space: nowrap;
-}
+/* ==========================================================================
+   10. RESPONSIVE / MEDIA QUERIES
+   ========================================================================== */
 
-.fade-in-up {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-}
+@media (max-width: 850px) {
+  .top-banner {
+    height: auto;
+    padding: 12px 0 6px 0;
+  }
+  
+  .top-nav {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 
-.fade-in-up.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
+  .brand-title {
+    width: 100%;
+    margin-bottom: 8px;
+    padding-left: 5px;
+  }
 
-/* ============================= */
-/* Responsive                    */
-/* ============================= */
+  /* C'est ce bloc qui prend le contrôle du scroll global sur mobile maintenant */
+  .nav-scroll-container {
+    display: flex; 
+    width: 100%;
+    overflow-x: auto;
+    white-space: nowrap;
+    align-items: center;
+    padding-bottom: 6px;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+  .nav-scroll-container::-webkit-scrollbar { display: none; }
 
-@media (max-width: 800px) {
+  .header-nav-links {
+    display: flex;
+    justify-content: flex-start;
+    flex: none; /* Désactive le comportement desktop */
+  }
+  
+  .header-nav-links a { 
+    padding: 6px 12px; 
+    font-size: 0.95rem;
+    flex-shrink: 0; 
+  }
+
+  /* Les boutons FR et Lune se calent gentiment à la suite directe des liens */
+  .header-controls {
+    display: flex;
+    flex: none;
+    flex-shrink: 0;
+    margin-left: 20px; /* Petit espace de séparation après le lien "Actu" */
+    padding-right: 15px; /* Évite que la lune colle au bord de l'écran en fin de course */
+  }
+
+  /* Masquage des réseaux sur le header mobile (ils restent dans le footer) */
+  .top-banner .social-icons {
+    display: none;
+  }
+  
   .main-content {
-    flex-direction: column;
-    padding: 0 10px;
-    padding-top: 8.5rem; /* Espace encore étendu pour les mobiles */
+    padding: 0 15px; 
+    margin-top: 20px;        
   }
-
-  .side-banner {
-    width: 100%;
-    box-sizing: border-box;
-  }
-
-  .content-area {
-    width: 100%;
-    box-sizing: border-box;
-    padding: 15px;
-  }
-
-  .header-line-top {
-    flex-direction: column;
-    gap: 10px;
-  }
-
-  .social-icons {
-    margin: 5px 0;
-  }
+  
+  .content-area { width: 100%; box-sizing: border-box; padding: 15px; }
 }
 
 @media (max-width: 600px) {
