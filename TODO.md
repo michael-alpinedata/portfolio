@@ -2,7 +2,7 @@
 
 ## 🌍 Global & Branding
 - [ ] Remplacer l'identité "Michael Garcia" par **"Alpine Data | Michael Garcia"** partout.
-- [ ] Remplacer l'ancienne adresse email `michael.garcia.73@gmail.com` par la nouvelle : `michael@alpinedata.fr` sur l'ensemble des supports.
+- [ ] Remplacer l'ancienne adresse email `michael@alpinedata.fr` par la nouvelle : `michael@alpinedata.fr` sur l'ensemble des supports.
 - [ ] Mettre à jour l'URL principale partout : `https://alpinedata.fr`.
 
 ---
@@ -12,7 +12,7 @@
 - [x] **[X] Contenu :** Réintégrer la photo de profil (format circulaire ou épuré) sur l'accueil. *(Terminé)*
 - [x] **[M] Navigation :** Rendre la barre de menu "Sticky" (fixe au scroll) sur mobile et desktop. **ATTENTION : Le fond doit rester 100% opaque (pas de transparence) lors du scroll.** *(Terminé)*
 - [x] **[M] Social :** Ajouter les icônes de contact dans le header. **ATTENTION : Ne pas utiliser les SVG par défaut. Reprendre exactement le style et le design des icônes déjà présentes dans la section "Contact" du site.** *(Terminé)*
-- [x] **Projets :** Parcourir l'ensemble du code et remplacer l'ancien identifiant GitHub `MichaelG-create` par le nouveau : `michael-alpinedata`. *(Terminé)*
+- [x] **Projets :** Parcourir l'ensemble du code et remplacer l'ancien identifiant GitHub `michael-alpinedata` par le nouveau : `michael-alpinedata`. *(Terminé)*
 - [ ] **Nouveauté (Page Actu) :** Créer la page `actu.html` (et son lien dans le header) comprenant :
     - Un bloc Substack avec un embed de la dernière publication de la newsletter *de_newton_a_la_data*.
     - Un bloc LinkedIn présentant des extraits ou liens directs vers vos derniers posts.

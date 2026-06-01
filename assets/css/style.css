@@ -9,7 +9,6 @@
   --title-color: #0f172a;
   --primary-color: #0ea5e9;
   --primary-hover: #0284c7;
-  --sidebar-bg: rgba(255, 255, 255, 0.85);
   --accent-color: #0ea5e9;
   --metric-bg: rgba(248, 250, 252, 0.6);
   --main-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
@@ -27,7 +26,6 @@
     --title-color: #f8fafc;
     --primary-color: #38bdf8;
     --primary-hover: #7dd3fc;
-    --sidebar-bg: rgba(30, 41, 59, 0.65);
     --accent-color: #2dd4bf;
     --metric-bg: rgba(15, 23, 42, 0.6);
     --main-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
@@ -45,7 +43,6 @@
   --title-color: #f8fafc;
   --primary-color: #38bdf8;
   --primary-hover: #7dd3fc;
-  --sidebar-bg: rgba(30, 41, 59, 0.65);
   --accent-color: #2dd4bf;
   --metric-bg: rgba(15, 23, 42, 0.6);
   --main-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
@@ -62,7 +59,6 @@
   --title-color: #0f172a;
   --primary-color: #0ea5e9;
   --primary-hover: #0284c7;
-  --sidebar-bg: rgba(255, 255, 255, 0.85);
   --accent-color: #0ea5e9;
   --metric-bg: rgba(248, 250, 252, 0.6);
   --main-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
@@ -181,7 +177,7 @@ html {
   margin: 20px auto;
   min-height: 70vh;
   gap: 20px;
-  padding-top: 5rem; /* Add padding to prevent content from being hidden under the sticky header */
+  padding-top: 6.5rem; /* Augmenté pour éviter les chevauchements dus au header à 2 lignes */
 }
 
 .content-area {
@@ -197,30 +193,46 @@ html {
 }
 
 /* ============================= */
-/* Top banner / nav              */
+/* Top banner / nav (Strict Overrides)[cite: 1] */
 /* ============================= */
 
 .top-banner {
-  background-color: var(--header-bg);
+  background-color: var(--header-bg) !important; /* Force l'opacité totale de l'arrière-plan[cite: 1] */
+  backdrop-filter: none !important;             /* Désactive l'effet de flou translucide sous le menu[cite: 1] */
+  -webkit-backdrop-filter: none !important;
   border-bottom: 1px solid var(--border-color);
   width: 100%;
-  padding: 12px 20px;
+  padding: 10px 20px;
   box-sizing: border-box;
-  position: sticky; /* Make the header sticky */
-  top: 0;          /* Stick it to the top */
-  z-index: 1000;   /* Ensure it stays on top of other content */
-  box-shadow: var(--main-shadow); /* Use existing shadow variable for consistency */
+  position: sticky; /* Menu fixe au défilement[cite: 1] */
+  top: 0;          
+  z-index: 1000;   
+  box-shadow: var(--main-shadow); 
 }
 
 .top-nav {
   max-width: 1200px;
   margin: 0 auto;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  flex-direction: column; /* Force la distribution des éléments sur 2 lignes horizontales[cite: 1] */
+  gap: 10px;
 }
 
-.top-nav a {
+/* Ligne supérieure du header (Navigation, Icônes et Contrôles)[cite: 1] */
+.header-line-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.header-nav-links {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.header-nav-links a {
   color: var(--title-color);
   text-decoration: none;
   padding: 8px 15px;
@@ -228,35 +240,58 @@ html {
   transition: all 0.2s ease;
 }
 
-.top-nav a:hover {
+.header-nav-links a:hover {
   background-color: var(--bg-color);
   color: var(--primary-color);
   border-radius: 6px;
 }
 
+/* Icônes de contact ajustées au même niveau sur la ligne du haut[cite: 1] */
 .social-icons {
   display: flex;
   align-items: center;
-  margin: 0 10px; /* Add some margin around the group of icons */
+  gap: 15px;
+  margin: 0 20px;
 }
 
+/* Style des icônes hérité et calqué sur la section Contact[cite: 1] */
 .social-icons a {
-  color: var(--title-color);
-  font-size: 1.2rem;
-  transition: color 0.2s ease;
-  margin: 0 0.5rem;
-  text-decoration: none; 
-  background-color: transparent;
+  font-size: 1.3rem;
+  color: var(--text-color);
+  opacity: 0.8;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
   padding: 0;
+  background: transparent;
+  text-decoration: none;
 }
 
 .social-icons a:hover {
   color: var(--primary-color) !important;
-  background-color: transparent !important;
+  opacity: 1;
+  transform: translateY(-2px);
+  background: transparent !important;
 }
 
 .social-icons a svg {
   vertical-align: middle;
+}
+
+.header-controls {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.lang-selector {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-color);
+}
+
+.lang-selector a {
+  color: var(--title-color);
 }
 
 .theme-toggle-btn {
@@ -276,32 +311,41 @@ html {
   transform: rotate(15deg);
 }
 
+/* Ligne inférieure du header (Titre de marque Alpine Data)[cite: 1] */
+.header-line-bottom {
+  display: flex;
+  justify-content: flex-start;
+  width: 100%;
+  padding-left: 15px;
+  border-top: 1px solid var(--border-color);
+  padding-top: 8px;
+}
+
+.brand-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--title-color);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.brand-title:hover {
+  text-decoration: none;
+  color: var(--primary-color);
+}
+
 /* ============================= */
 /* Sidebar                       */
 /* ============================= */
 
-.side-banner {
-  width: 300px;
-  min-width: 250px;
-  padding: 25px;
-  background-color: var(--sidebar-bg);
-  backdrop-filter: var(--glass-blur);
-  -webkit-backdrop-filter: var(--glass-blur);
-  border: 1px solid var(--border-color);
-  box-shadow: var(--main-shadow);
-  border-radius: 12px;
-  text-align: center;
-  align-self: flex-start;
-}
-
 .profile-photo {
-  width: clamp(150px, 20vw, 200px); /* Responsive width between 150px and 200px */
-  height: clamp(150px, 20vw, 200px); /* Keep aspect ratio with height matching width */
+  width: clamp(150px, 20vw, 200px); 
+  height: clamp(150px, 20vw, 200px); 
   border-radius: 50%;
   object-fit: cover;
   margin-bottom: 15px;
-  border: 3px solid var(--primary-color); /* Fine colored border */
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  border: 3px solid var(--primary-color); 
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1); 
 }
 
 .name {
@@ -320,7 +364,6 @@ html {
   color: var(--text-color);
 }
 
-/* contact lines inside sidebar */
 .location-info p {
   margin: 4px 0;
   font-size: 0.85em;
@@ -394,7 +437,6 @@ html {
   margin: 20px auto;
 }
 
-/* hero block wrapper (title + image aligned) */
 .hero-block {
   width: 100%;
   margin: 0 0 1rem 0;
@@ -415,11 +457,11 @@ html {
 }
 
 .hero-profile-photo {
-  margin: 0 auto 20px auto; /* Center the image and add space below */
-  display: block; /* Ensure it takes its own line and margin auto works */
+  margin: 0 auto 20px auto; 
+  display: block; 
 }
 
-/* Hero image fading / blinking for Bank Branch Footfall */
+/* Hero image fading / blinking */
 .hero-block-cycle .hero-images-wrapper {
   position: relative;
   width: 100%;
@@ -427,7 +469,6 @@ html {
   margin: 0 auto 1rem auto;
 }
 
-/* Stack both images on top of each other */
 .hero-block-cycle .hero-image-primary,
 .hero-block-cycle .hero-image-secondary {
   position: absolute;
@@ -436,22 +477,19 @@ html {
   height: auto;
   border-radius: 12px;
   object-fit: contain;
-  animation-duration: 6s;           /* adjust speed here */
+  animation-duration: 6s;           
   animation-iteration-count: infinite;
   animation-timing-function: ease-in-out;
 }
 
-/* First screenshot visible first, then fades out */
 .hero-block-cycle .hero-image-primary {
   animation-name: heroFadePrimary;
 }
 
-/* Second screenshot fades in when the first fades out */
 .hero-block-cycle .hero-image-secondary {
   animation-name: heroFadeSecondary;
 }
 
-/* Keyframes: alternate opacity between the two */
 @keyframes heroFadePrimary {
   0%, 40%   { opacity: 1; }
   50%, 100% { opacity: 0; }
@@ -466,13 +504,12 @@ html {
   display: block;
   width: 100%;
   height: auto;
-  visibility: hidden;   /* keeps height */
-  opacity: 0;           /* belt-and-braces: no pixels */
+  visibility: hidden;   
+  opacity: 0;           
   border: none;
   margin: 0;
   padding: 0;
 }
-
 
 /* ============================= */
 /* Metrics grid                  */
@@ -506,13 +543,11 @@ html {
 /* Architecture diagram          */
 /* ============================= */
 
-/* Container (now simple, no yellow background) */
 .architecture-diagram {
   text-align: center;
   margin: 2rem 0;
 }
 
-/* Optional: if you still use the flow-step / arrow chips */
 .architecture-diagram .flow-step {
   display: inline-block;
   margin: 4px 8px;
@@ -529,7 +564,6 @@ html {
   opacity: 0.9;
 }
 
-/* Image version of the architecture diagram */
 .architecture-image {
   max-width: 100%;
   height: auto;
@@ -557,16 +591,14 @@ html {
   box-shadow: var(--hover-shadow);
 }
 
-/* remove default marker */
 .project-details > summary::-webkit-details-marker {
   display: none;
 }
 
-/* clickable header bar - normal text layout to avoid flex word spacing issues */
 .project-details > summary {
   list-style: none;
   cursor: pointer;
-  font-size: 1.35rem;     /* bigger project titles */
+  font-size: 1.35rem;     
   font-weight: 650;
   color: var(--title-color);
   border-bottom: 2px solid var(--primary-color);
@@ -579,7 +611,6 @@ html {
   color: var(--primary-color);
 }
 
-/* arrow icon */
 .project-details > summary::before {
   content: "▸";
   display: inline-block;
@@ -602,18 +633,12 @@ html {
   padding: 0 0 0.5rem 0;
 }
 
-/* Emphasized labels like "Objective:", "Stack:", "Key Features:" */
 .project-article p em {
   font-style: normal;
   font-weight: 600;
-  color: var(--accent-color); /* stronger blue accent */
+  color: var(--accent-color); 
   text-transform: uppercase;
   letter-spacing: 0.03em;
-}
-
-
-/* add a bit more separation above lists that follow labels */
-.project-article p em {
   display: inline-block;
   margin-bottom: 0.15rem;
 }
@@ -622,10 +647,8 @@ html {
   margin-top: 0.25rem;
 }
 
-
-/* first bold word in stack / feature lists */
 .project-article ul li > strong {
-  color: var(--title-color);        /* dark navy or white in dark mode */
+  color: var(--title-color);        
   font-weight: 700;
 }
 
@@ -641,63 +664,23 @@ html {
 }
 
 .stack-list li {
-  margin-bottom: 0.15rem;
+  margin-bottom: 0.4rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 5px;
+}
+
+.stack-list li > strong {
+  margin-right: 8px;
+  color: var(--title-color);
+  font-weight: 700;
 }
 
 /* ============================= */
-/* Utilities                     */
+/* Tech Tags                     */
 /* ============================= */
 
-.nowrap {
-  white-space: nowrap;
-}
-
-/* ============================= */
-/* Responsive                    */
-/* ============================= */
-
-@media (max-width: 800px) {
-  .main-content {
-    flex-direction: column;
-    padding: 0 10px;
-  }
-
-  .side-banner {
-    width: 100%;
-    box-sizing: border-box;
-  }
-
-  .content-area {
-    width: 100%;
-    box-sizing: border-box;
-    padding: 15px;
-  }
-
-  .top-nav {
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
-  }
-
-  .right-tabs {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 5px;
-    margin-top: 0;
-  }
-}
-
-@media (max-width: 600px) {
-  h1 { font-size: 1.8rem; }
-  h2 { font-size: 1.4rem; }
-  h3 { font-size: 1.15rem; }
-  .project-details > summary { font-size: 1.15rem; }
-}
-
-/* ============================= */
-/* Tech Tags & Tech Stacks       */
-/* ============================= */
 .tech-tag {
   display: inline-block;
   padding: 2px 8px;
@@ -716,23 +699,13 @@ html {
   transform: translateY(-1px);
 }
 
-.stack-list li {
-  margin-bottom: 0.4rem;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 5px;
-}
-
-.stack-list li > strong {
-  margin-right: 8px;
-  color: var(--title-color);
-  font-weight: 700;
-}
-
 /* ============================= */
-/* Scroll Animations             */
+/* Utilities & Animations        */
 /* ============================= */
+
+.nowrap {
+  white-space: nowrap;
+}
 
 .fade-in-up {
   opacity: 0;
@@ -743,4 +716,43 @@ html {
 .fade-in-up.visible {
   opacity: 1;
   transform: translateY(0);
+}
+
+/* ============================= */
+/* Responsive                    */
+/* ============================= */
+
+@media (max-width: 800px) {
+  .main-content {
+    flex-direction: column;
+    padding: 0 10px;
+    padding-top: 8.5rem; /* Espace encore étendu pour les mobiles */
+  }
+
+  .side-banner {
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .content-area {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 15px;
+  }
+
+  .header-line-top {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .social-icons {
+    margin: 5px 0;
+  }
+}
+
+@media (max-width: 600px) {
+  h1 { font-size: 1.8rem; }
+  h2 { font-size: 1.4rem; }
+  h3 { font-size: 1.15rem; }
+  .project-details > summary { font-size: 1.15rem; }
 }
