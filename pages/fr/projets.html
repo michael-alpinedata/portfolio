@@ -7,7 +7,7 @@
   <article class="hero-block fade-in-up">
     <div class="metrics-grid" style="margin-top: 0;">
       <div style="grid-column: 1 / -1; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 10px; margin-bottom: 15px;">
-        <span style="font-weight: bold; font-size: 1.1em; color: var(--primary-color);"><i class="fa-solid fa-chart-line" style="margin-right: 8px;"></i>Impact Financier & Volatilité</span>
+        <span style="font-weight: bold; font-size: 1.1em; color: var(--primary-color);"><i class="fa-solid fa-chart-line" style="margin-right: 8px;"></i>Impact Financier &amp; Volatilité</span>
         <span style="font-size: 0.85em; background: rgba(16, 185, 129, 0.2); padding: 3px 8px; border-radius: 4px; color: #10b981; border: 1px solid rgba(16, 185, 129, 0.4); font-family: 'JetBrains Mono', monospace;">LIVE</span>
       </div>
       <div class="metric-item" style="border-right: 1px solid var(--border-color);">
@@ -57,9 +57,9 @@
     <div style="margin-bottom: 1.5rem;">
       <h3 style="color: var(--primary-color); margin-bottom: 0.5rem;">4. Justification des Choix Techniques</h3>
       <ul style="padding-left: 1.2rem;">
-        <li style="margin-bottom: 0.5rem;"><strong>GCP & BigQuery :</strong> Le modèle de facturation "à la requête" (Serverless) est idéal et peu coûteux pour de l'analytique ponctuelle par rapport à une base allumée 24/7.</li>
+        <li style="margin-bottom: 0.5rem;"><strong>GCP &amp; BigQuery :</strong> Le modèle de facturation "à la requête" (Serverless) est idéal et peu coûteux pour de l'analytique ponctuelle par rapport à une base allumée 24/7.</li>
         <li style="margin-bottom: 0.5rem;"><strong>dbt Core :</strong> Permet de modulariser la logique financière complexe en SQL clair, de la tester (CI/CD), et de garantir la fiabilité des calculs.</li>
-        <li><strong>Clustering & Partitionnement :</strong> Divise par 10 les coûts de requêtage du dashboard en limitant physiquement le volume de données scannées lors des filtrages utilisateurs.</li>
+        <li><strong>Clustering &amp; Partitionnement :</strong> Divise par 10 les coûts de requêtage du dashboard en limitant physiquement le volume de données scannées lors des filtrages utilisateurs.</li>
       </ul>
     </div>
 
@@ -76,7 +76,7 @@
   <article class="hero-block fade-in-up">
     <div class="metrics-grid" style="margin-top: 0;">
       <div style="grid-column: 1 / -1; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 10px; margin-bottom: 15px;">
-        <span style="font-weight: bold; font-size: 1.1em; color: var(--primary-color);"><i class="fa-solid fa-microchip" style="margin-right: 8px;"></i>Performance & Conformité IA</span>
+        <span style="font-weight: bold; font-size: 1.1em; color: var(--primary-color);"><i class="fa-solid fa-microchip" style="margin-right: 8px;"></i>Performance &amp; Conformité IA</span>
       </div>
       <div class="metric-item" style="border-right: 1px solid var(--border-color);">
         <div style="font-size: 0.85em; opacity: 0.7; margin-bottom: 5px;">Latence Inférence</div>
@@ -127,7 +127,7 @@
       <ul style="padding-left: 1.2rem;">
         <li style="margin-bottom: 0.5rem;"><strong>Azure Container Apps :</strong> Une solution Serverless qui s'adapte automatiquement (scale) aux pics de charge imprévisibles liés aux périodes d'examens, tout en gardant des coûts maîtrisés.</li>
         <li style="margin-bottom: 0.5rem;"><strong>Groq LPU (Llama 3.3) :</strong> Utilisation de processeurs spécialisés (LPU) permettant une inférence ultra-rapide et nettement moins coûteuse que les API propriétaires traditionnelles.</li>
-        <li><strong>Zod & TypeScript :</strong> Strictement nécessaires pour valider le format de données renvoyé par l'IA (Structured Outputs), évitant que l'application ne crashe si l'IA hallucine ou change le format de sa réponse.</li>
+        <li><strong>Zod &amp; TypeScript :</strong> Strictement nécessaires pour valider le format de données renvoyé par l'IA (Structured Outputs), évitant que l'application ne crashe si l'IA hallucine ou change le format de sa réponse.</li>
       </ul>
     </div>
 
@@ -144,7 +144,7 @@
   <article class="hero-block fade-in-up">
     <div class="metrics-grid" style="margin-top: 0;">
       <div style="grid-column: 1 / -1; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 10px; margin-bottom: 15px;">
-        <span style="font-weight: bold; font-size: 1.1em; color: var(--primary-color);"><i class="fa-solid fa-bolt" style="margin-right: 8px;"></i>Efficience Lambda & Temps Réel</span>
+        <span style="font-weight: bold; font-size: 1.1em; color: var(--primary-color);"><i class="fa-solid fa-bolt" style="margin-right: 8px;"></i>Efficience Lambda &amp; Temps Réel</span>
       </div>
       <div class="metric-item" style="border-right: 1px solid var(--border-color);">
         <div style="font-size: 0.85em; opacity: 0.7; margin-bottom: 5px;">Économie Cloud</div>
@@ -164,7 +164,7 @@
       <div class="metric-item">
         <div style="font-size: 0.85em; opacity: 0.7; margin-bottom: 5px;">Architecture</div>
         <div class="metric-value font-code" style="color: #f59e0b;">Dual</div>
-        <div style="font-size: 0.8em; opacity: 0.6; margin-top: 5px;">Speed & Batch Layers</div>
+        <div style="font-size: 0.8em; opacity: 0.6; margin-top: 5px;">Speed &amp; Batch Layers</div>
       </div>
     </div>
   </article>
@@ -194,7 +194,7 @@
       <ul style="padding-left: 1.2rem;">
         <li style="margin-bottom: 0.5rem;"><strong>AWS SQS FIFO (au lieu de Kinesis) :</strong> Transition purement FinOps. SQS offre une facturation à l'usage et garantit l'ordre des messages financiers, réduisant la facture Cloud de 80% face à Kinesis qui nécessite une allocation continue.</li>
         <li style="margin-bottom: 0.5rem;"><strong>AWS Lambda (Speed Layer) :</strong> Déclenchement instantané à chaque message reçu pour un calcul de volatilité ultra-rapide (Bandes de Bollinger) avec maintien de l'état en mémoire (Warm Start).</li>
-        <li><strong>Snowflake & dbt (Batch Layer) :</strong> Snowflake est conçu pour le stockage analytique massif, tandis que dbt permet de garantir l'idempotence des données (purger les doublons causés par les micro-coupures réseau) via des modèles incrémentaux.</li>
+        <li><strong>Snowflake &amp; dbt (Batch Layer) :</strong> Snowflake est conçu pour le stockage analytique massif, tandis que dbt permet de garantir l'idempotence des données (purger les doublons causés par les micro-coupures réseau) via des modèles incrémentaux.</li>
       </ul>
     </div>
 

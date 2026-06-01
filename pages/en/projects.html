@@ -7,7 +7,7 @@
   <article class="hero-block fade-in-up">
     <div class="metrics-grid" style="margin-top: 0;">
       <div style="grid-column: 1 / -1; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 10px; margin-bottom: 15px;">
-        <span style="font-weight: bold; font-size: 1.1em; color: var(--primary-color);"><i class="fa-solid fa-chart-line" style="margin-right: 8px;"></i>Financial Impact & Volatility</span>
+        <span style="font-weight: bold; font-size: 1.1em; color: var(--primary-color);"><i class="fa-solid fa-chart-line" style="margin-right: 8px;"></i>Financial Impact &amp; Volatility</span>
         <span style="font-size: 0.85em; background: rgba(16, 185, 129, 0.2); padding: 3px 8px; border-radius: 4px; color: #10b981; border: 1px solid rgba(16, 185, 129, 0.4); font-family: 'JetBrains Mono', monospace;">LIVE</span>
       </div>
       <div class="metric-item" style="border-right: 1px solid var(--border-color);">
@@ -57,9 +57,9 @@
     <div style="margin-bottom: 1.5rem;">
       <h3 style="color: var(--primary-color); margin-bottom: 0.5rem;">4. Technical Justifications</h3>
       <ul style="padding-left: 1.2rem;">
-        <li style="margin-bottom: 0.5rem;"><strong>GCP & BigQuery:</strong> The serverless "pay-per-query" billing model is ideal and much cheaper for analytical workloads compared to a 24/7 provisioned database.</li>
+        <li style="margin-bottom: 0.5rem;"><strong>GCP &amp; BigQuery:</strong> The serverless "pay-per-query" billing model is ideal and much cheaper for analytical workloads compared to a 24/7 provisioned database.</li>
         <li style="margin-bottom: 0.5rem;"><strong>dbt Core:</strong> Allows modularizing complex financial logic into clear SQL, testing it (CI/CD), and guaranteeing calculation reliability.</li>
-        <li><strong>Clustering & Partitioning:</strong> Divides dashboard query costs by 10x by physically limiting the volume of data scanned during user filtering.</li>
+        <li><strong>Clustering &amp; Partitioning:</strong> Divides dashboard query costs by 10x by physically limiting the volume of data scanned during user filtering.</li>
       </ul>
     </div>
 
@@ -76,7 +76,7 @@
   <article class="hero-block fade-in-up">
     <div class="metrics-grid" style="margin-top: 0;">
       <div style="grid-column: 1 / -1; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 10px; margin-bottom: 15px;">
-        <span style="font-weight: bold; font-size: 1.1em; color: var(--primary-color);"><i class="fa-solid fa-microchip" style="margin-right: 8px;"></i>AI Performance & Compliance</span>
+        <span style="font-weight: bold; font-size: 1.1em; color: var(--primary-color);"><i class="fa-solid fa-microchip" style="margin-right: 8px;"></i>AI Performance &amp; Compliance</span>
       </div>
       <div class="metric-item" style="border-right: 1px solid var(--border-color);">
         <div style="font-size: 0.85em; opacity: 0.7; margin-bottom: 5px;">Inference Latency</div>
@@ -144,7 +144,7 @@
   <article class="hero-block fade-in-up">
     <div class="metrics-grid" style="margin-top: 0;">
       <div style="grid-column: 1 / -1; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 10px; margin-bottom: 15px;">
-        <span style="font-weight: bold; font-size: 1.1em; color: var(--primary-color);"><i class="fa-solid fa-bolt" style="margin-right: 8px;"></i>Lambda Efficiency & Real-Time</span>
+        <span style="font-weight: bold; font-size: 1.1em; color: var(--primary-color);"><i class="fa-solid fa-bolt" style="margin-right: 8px;"></i>Lambda Efficiency &amp; Real-Time</span>
       </div>
       <div class="metric-item" style="border-right: 1px solid var(--border-color);">
         <div style="font-size: 0.85em; opacity: 0.7; margin-bottom: 5px;">Cloud Savings</div>
@@ -164,7 +164,7 @@
       <div class="metric-item">
         <div style="font-size: 0.85em; opacity: 0.7; margin-bottom: 5px;">Architecture</div>
         <div class="metric-value font-code" style="color: #f59e0b;">Dual</div>
-        <div style="font-size: 0.8em; opacity: 0.6; margin-top: 5px;">Speed & Batch Layers</div>
+        <div style="font-size: 0.8em; opacity: 0.6; margin-top: 5px;">Speed &amp; Batch Layers</div>
       </div>
     </div>
   </article>
@@ -194,7 +194,7 @@
       <ul style="padding-left: 1.2rem;">
         <li style="margin-bottom: 0.5rem;"><strong>AWS SQS FIFO (instead of Kinesis):</strong> A pure FinOps transition. SQS offers pay-per-use billing and guarantees strict ordering of financial messages, reducing cloud bills by 80% compared to Kinesis, which requires continuous resource allocation.</li>
         <li style="margin-bottom: 0.5rem;"><strong>AWS Lambda (Speed Layer):</strong> Instantly triggers on each received message for ultra-fast volatility calculation (Bollinger Bands) while maintaining state in memory (Warm Start).</li>
-        <li><strong>Snowflake & dbt (Batch Layer):</strong> Snowflake handles massive analytical storage, while dbt guarantees data idempotency (purging duplicates caused by network retries) using incremental models.</li>
+        <li><strong>Snowflake &amp; dbt (Batch Layer):</strong> Snowflake handles massive analytical storage, while dbt guarantees data idempotency (purging duplicates caused by network retries) using incremental models.</li>
       </ul>
     </div>
 
