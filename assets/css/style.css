@@ -3,6 +3,7 @@
 :root {
   --bg-color: #f8fafc;
   --text-color: #334155;
+  --header-bg: #ffffff;
   --card-bg: rgba(255, 255, 255, 0.85);
   --border-color: rgba(226, 232, 240, 0.8);
   --title-color: #0f172a;
@@ -20,6 +21,7 @@
   :root:not(.light-theme) {
     --bg-color: #0b1120;
     --text-color: #94a3b8;
+    --header-bg: #0b1120;
     --card-bg: rgba(30, 41, 59, 0.65);
     --border-color: rgba(148, 163, 184, 0.1);
     --title-color: #f8fafc;
@@ -37,6 +39,7 @@
 :root.dark-theme {
   --bg-color: #0b1120;
   --text-color: #94a3b8;
+  --header-bg: #0b1120;
   --card-bg: rgba(30, 41, 59, 0.65);
   --border-color: rgba(148, 163, 184, 0.1);
   --title-color: #f8fafc;
@@ -53,6 +56,7 @@
 :root.light-theme {
   --bg-color: #f8fafc;
   --text-color: #334155;
+  --header-bg: #ffffff;
   --card-bg: rgba(255, 255, 255, 0.85);
   --border-color: rgba(226, 232, 240, 0.8);
   --title-color: #0f172a;
@@ -197,7 +201,7 @@ html {
 /* ============================= */
 
 .top-banner {
-  background-color: var(--card-bg);
+  background-color: var(--header-bg);
   border-bottom: 1px solid var(--border-color);
   width: 100%;
   padding: 12px 20px;
@@ -237,19 +241,22 @@ html {
 }
 
 .social-icons a {
-  color: var(--text-color);
+  color: var(--title-color);
   font-size: 1.2rem;
-  transition: color 0.3s ease;
-  margin: 0 0.5rem; /* Space between icons */
-  /* Remove default link underline and background hover from .top-nav a */
+  transition: color 0.2s ease;
+  margin: 0 0.5rem;
   text-decoration: none; 
   background-color: transparent;
-  padding: 0; /* Remove padding inherited from .top-nav a */
+  padding: 0;
 }
 
 .social-icons a:hover {
-  color: var(--primary-color); /* Assuming --primary-color is an accent color */
-  background-color: transparent; /* Ensure no background on hover for icons */
+  color: var(--primary-color) !important;
+  background-color: transparent !important;
+}
+
+.social-icons a svg {
+  vertical-align: middle;
 }
 
 .theme-toggle-btn {
