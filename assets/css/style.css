@@ -298,11 +298,20 @@ a:hover { text-decoration: underline; }
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
+
 .align-left { float: left; border-radius: 16px; object-fit: cover; display: block; margin: 20px auto; }
 .content-area img { max-width: 100%; height: auto; display: block; margin: 20px auto; }
 
 .hero-block { width: 100%; margin: 0 0 1rem 0; text-align: center; }
-.hero-block h2 { display: block; border: none; padding-bottom: 10px; margin-bottom: 20px; }
+
+.hero-block h2 { 
+  color: var(--accent-color); 
+  font-size: 1.5em; 
+  border: none; 
+  padding-bottom: 0; 
+  margin-bottom: 30px; 
+}
+
 .hero-image { width: 100%; border-radius: 12px; display: block; }
 .hero-profile-photo { margin: 0 auto 20px auto; display: block; }
 
