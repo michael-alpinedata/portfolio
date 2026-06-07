@@ -41,6 +41,9 @@ async function loadContent() {
                 const html = await response.text();
                 appContent.innerHTML = html;
                 
+                //put back scroll to top position of the page when change tab
+                window.scrollTo(0, 0);
+
                 // Update the page title
                 pageTitle.textContent = `Portfolio - ${page.title}`;
 
